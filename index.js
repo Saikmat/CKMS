@@ -37,7 +37,7 @@ var routeDisplay = new function(){
   }
 }
 
-function initMap(){
+async function initMap(){
   const center = {lat: 39.254752, lng: -76.710837};
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 17,
@@ -53,22 +53,34 @@ function initMap(){
       },
     }
   });
-  
+
   let origin = "Meyerhoff Building";
   let dest = "Albin O. Kuhn Library and Gallery";
 
   routeDisplay.setup(map);
   routeDisplay.setPoints(origin, dest);
-
   routeDisplay.render();
+
+  const input = document.getElementById("pac-input");
+  const searchBox = new google.maps.places.SearchBox(input);
+
+  map.controls[google.maps.ControlPosition.TOP_RIGHT].push(input);
+  map.addListener("bounds_changed", () => {
+    searchBox.setBounds(map.getBounds());
+  });
+
+  searchBox.addListener("places_changed", () => {
+      console.log(searchBox.getPlaces());
+  });
 }
 
 const loader = new Loader({
   apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
-  version: "weekly"
+  version: "weekly",
+  libraries: ["maps", "places"]
 });
 
-loader.importLibrary("maps").then(async () => {
+loader.load().then(async () => {
   initMap();
 }).catch((e) => {
   console.log("Failed to load api " + e);
