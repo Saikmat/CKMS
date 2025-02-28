@@ -53,13 +53,8 @@ async function initMap(){
       },
     }
   });
-
-  let origin = "Meyerhoff Building";
-  let dest = "Albin O. Kuhn Library and Gallery";
-
   routeDisplay.setup(map);
-  routeDisplay.setPoints(origin, dest);
-  routeDisplay.render();
+  let markers = [];
 
   const input = document.getElementById("pac-input");
   const searchBox = new google.maps.places.SearchBox(input);
@@ -70,14 +65,43 @@ async function initMap(){
   });
 
   searchBox.addListener("places_changed", () => {
-      console.log(searchBox.getPlaces());
+      const places = searchBox.getPlaces();
+      if(places.length === 0) return;
+
+      markers.forEach((marker) => {
+        marker.setMap(null);
+      });
+      markers = [];
+
+      places.forEach((place) => {
+        if(!place.geometry || !place.geometry.location){
+          return;
+        }
+
+        const marker = new google.maps.Marker({
+          map,
+          position: place.geometry.location,
+          title: place.name
+        });
+        const infoWindow = new google.maps.InfoWindow({
+          content: Math.random() + "",
+        });
+        marker.addListener("click", () => {
+          infoWindow.open({
+            map: map,
+            anchor: marker
+          })
+        });
+
+        markers.push(marker);
+      });
   });
 }
 
 const loader = new Loader({
   apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
   version: "weekly",
-  libraries: ["maps", "places"]
+  libraries: ["maps", "places", "marker"]
 });
 
 loader.load().then(async () => {
