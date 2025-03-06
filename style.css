@@ -4,6 +4,16 @@
   margin: auto;
 }
 
+#pac-input {
+  width: 200px;
+  height: 40px;
+  margin: 30px 30px auto;
+  text-align: left;
+  text-indent: 2em;
+  border-radius: 25px;
+  border-color: transparent;
+}
+
 html, body {
   height: 100%;
   margin: 0;

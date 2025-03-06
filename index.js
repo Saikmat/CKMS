@@ -57,12 +57,20 @@ async function initMap(){
   let markers = [];
 
   const input = document.getElementById("pac-input");
-  const searchBox = new google.maps.places.SearchBox(input);
+  const searchBox = new google.maps.places.Autocomplete(input, {fields: ["place_id", "geometry", "formatted_address", "name"]});
+
 
   map.controls[google.maps.ControlPosition.TOP_RIGHT].push(input);
   map.addListener("bounds_changed", () => {
-    searchBox.setBounds(map.getBounds());
+    searchBox.bindTo("bounds", map);
   });
+
+  const commonsMarkerView = new AdvancedMarkerElement({
+    map,
+    position: {lat: 37.434, lng: -76.710837},
+    content: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
+    title: "Beach Flag",
+  })
 
   searchBox.addListener("places_changed", () => {
       const places = searchBox.getPlaces();
