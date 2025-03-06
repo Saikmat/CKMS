@@ -51,7 +51,8 @@ async function initMap(){
         east: center["lng"] + 0.01,
         west: center["lng"] - 0.01,
       },
-    }
+    },
+    mapId: "784fd2107e90c001"
   });
   routeDisplay.setup(map);
   let markers = [];
