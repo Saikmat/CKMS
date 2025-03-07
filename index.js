@@ -38,6 +38,8 @@ var routeDisplay = new function(){
 }
 
 async function initMap(){
+  const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+
   const center = {lat: 39.254752, lng: -76.710837};
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 17,
@@ -52,13 +54,16 @@ async function initMap(){
         west: center["lng"] - 0.01,
       },
     },
-    mapId: "784fd2107e90c001"
+    mapId: import.meta.env.VITE_MAP_ID,
   });
   routeDisplay.setup(map);
   let markers = [];
 
   const input = document.getElementById("pac-input");
-  const searchBox = new google.maps.places.Autocomplete(input, {fields: ["place_id", "geometry", "formatted_address", "name"]});
+  const searchBox = new google.maps.places.Autocomplete(input, {
+    fields: ["place_id", "geometry", "formatted_address", "name"], 
+    strictBounds: true,
+  });
 
 
   map.controls[google.maps.ControlPosition.TOP_RIGHT].push(input);
@@ -66,44 +71,40 @@ async function initMap(){
     searchBox.bindTo("bounds", map);
   });
 
+  const flag = document.createElement('img');  
+  flag.src = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
   const commonsMarkerView = new AdvancedMarkerElement({
     map,
-    position: {lat: 37.434, lng: -76.710837},
-    content: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
-    title: "Beach Flag",
-  })
+    position: center,
+    content: flag,
+  });
 
-  searchBox.addListener("places_changed", () => {
-      const places = searchBox.getPlaces();
-      if(places.length === 0) return;
-
+  searchBox.addListener("place_changed", () => {
+      const place = searchBox.getPlace();
+      console.log(place);
       markers.forEach((marker) => {
         marker.setMap(null);
       });
       markers = [];
 
-      places.forEach((place) => {
-        if(!place.geometry || !place.geometry.location){
-          return;
-        }
-
-        const marker = new google.maps.Marker({
-          map,
-          position: place.geometry.location,
-          title: place.name
-        });
-        const infoWindow = new google.maps.InfoWindow({
-          content: Math.random() + "",
-        });
-        marker.addListener("click", () => {
-          infoWindow.open({
-            map: map,
-            anchor: marker
-          })
-        });
-
-        markers.push(marker);
+      if(!place.geometry || !place.geometry.location){
+        return;
+      }
+      
+      const marker = new AdvancedMarkerElement({
+        map,
+        position: place.geometry.location,
       });
+      const infoWindow = new google.maps.InfoWindow({
+        content: "<h1>" + place.name + "</h1>"
+      });
+      marker.addListener("gmp-click", () => {
+        infoWindow.open({
+          map: map,
+          anchor: marker
+        })
+      });
+      markers.push(marker);
   });
 }
 
