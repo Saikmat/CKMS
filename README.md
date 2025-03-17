@@ -16,7 +16,7 @@ This project uses the following technologies:
 
 - **Frontend**: 
   - HTML5, CSS3, JavaScript 
-  - [Google Maps API] (https://developers.google.com/maps/documentation/javascript/get-api-key)
+  - [Google Maps API](https://developers.google.com/maps/documentation/javascript/get-api-key)
 - **Backend**: 
   - [Node.js](https://nodejs.org/en) the server-side runtime environment for handling backend logic
   - [Express.js](https://expressjs.com/)  handles routing and API requests
@@ -88,7 +88,7 @@ We welcome contributions to improve the UMBC Interactive Map. Here's how you can
 
 ## Contact
 
-For questions or suggestions, please reach out to the product owner at [RX93572@umbc.ed].
+For questions or suggestions, please reach out to the product owner at [RX93572@umbc.edu].
 
 ## License
 
