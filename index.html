@@ -4,13 +4,28 @@
     <title>UMBC Map</title>
     <script type="module" src="./index.js"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1>UMBC Interactive Map</h1>
+    <div id="header">
+      <img src="UMBC-primary-logo-CMYK-on-black.png" id="logo"></img>
+      <h1 id="titletxt">Interactive Map</h1>
+    </div>
+
+    <div id="searchbar">
+      <input type="text" id="pac-input" name="pac-input" placeholder="Enter a location"></input>
+      <a id="accessible-txt">Accessible Routes</a>
+      <a id="weather-txt">Weather Routes</a>
+    </div>
 
     <div id="map"></div>
-    <input type="text" id="pac-input" name="pac-input" placeholder="Enter a location"></input>
-  
+
+    <div id="footer">
+      <button id="footer-button" onclick="window.open('https\://forms.gle/EBJ5S11ruVYUaRyTA', '_blank')">Provide Feedback</button>
+      <!-- Terms and Conditions, button for site map -->
+    </div>
     <script src="https://unpkg.com/@googlemaps/js-api-loader@1.x/dist/index.min.js"></script>
   </body>
 </html>
