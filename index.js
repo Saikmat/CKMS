@@ -92,25 +92,57 @@ const locations = [["Building Name", "Building Abbreviation", "Building Category
 ];
 
 
-async function initMap(){
+function searchBoxInitialization(searchBox, markers, AdvancedMarkerElement, map) {
+  searchBox.addListener("place_changed", () => {
+    const place = searchBox.getPlace();
+    console.log(place);
+    markers.forEach((marker) => {
+      marker.setMap(null);
+    });
+    markers = [];
+
+    if (!place.geometry || !place.geometry.location) {
+      return;
+    }
+
+    const marker = new AdvancedMarkerElement({
+      map,
+      position: place.geometry.location,
+    });
+    const infoWindow = new google.maps.InfoWindow({
+      content: "<h1>" + place.name + "</h1>"
+    });
+    marker.addListener("gmp-click", () => {
+      infoWindow.open(map, marker)
+    });
+    markers.push(marker);
+  });
+}
+
+export async function initMap(){
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
   const center = {lat: 39.254752, lng: -76.710837};
-  const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 17,
-    center: center,
-    minZoom: 16.5,
-    maxZoom: 25,
-    restriction: {
-      latLngBounds: {
-        north: center["lat"] + 0.009,
-        south: center["lat"] - 0.0105,
-        east: center["lng"] + 0.01,
-        west: center["lng"] - 0.01,
+
+  function getMap() {
+    return new google.maps.Map(document.getElementById("map"), {
+      zoom: 17,
+      center: center,
+      minZoom: 16.5,
+      maxZoom: 25,
+      restriction: {
+        latLngBounds: {
+          north: center["lat"] + 0.009,
+          south: center["lat"] - 0.0105,
+          east: center["lng"] + 0.01,
+          west: center["lng"] - 0.01,
+        },
       },
-    },
-    mapId: import.meta.env.VITE_MAP_ID,
-  });
+      mapId: import.meta.env.VITE_MAP_ID,
+    });
+  }
+
+  const map = getMap();
   routeDisplay.setup(map);
   let markers = [];
 
@@ -127,50 +159,25 @@ async function initMap(){
   });
 
   const flag = document.createElement('img');  
-  flag.src = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
+  flag.src = "./assets/UMBC_Retriever_Head.png";
   const commonsMarkerView = new AdvancedMarkerElement({
     map,
     position: center,
     content: flag,
   });
 
-  searchBox.addListener("place_changed", () => {
-      const place = searchBox.getPlace();
-      console.log(place);
-      markers.forEach((marker) => {
-        marker.setMap(null);
-      });
-      markers = [];
-
-      if(!place.geometry || !place.geometry.location){
-        return;
-      }
-      
-      const marker = new AdvancedMarkerElement({
-        map,
-        position: place.geometry.location,
-      });
-      const infoWindow = new google.maps.InfoWindow({
-        content: "<h1>" + place.name + "</h1>"
-      });
-      marker.addListener("gmp-click", () => {
-        infoWindow.open({
-          map: map,
-          anchor: marker
-        })
-      });
-      markers.push(marker);
-  });
+  searchBoxInitialization(searchBox, markers, AdvancedMarkerElement, map);
 }
 
 const loader = new Loader({
   apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
   version: "weekly",
-  libraries: ["maps", "places", "marker"]
+  libraries: ["maps", "places", "marker", "core"],
+  retries: 4
 });
 
-loader.load().then(async () => {
-  initMap();
+loader.importLibrary("routes").then(async () => {
+  await initMap();
 }).catch((e) => {
   console.log("Failed to load api " + e);
 });
