@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Temp Map</title>
-    <script type="module" src="./index.js"></script>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <h2>Map Test</h2>
-    
-    <label for="pac-input">Enter your name:</label>
-    <input type="text" id="pac-input" name="pac-input">
+<head>
+  <title>Map with Directions and Favorites</title>
+  <script type="module" src="./index.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Map Test</h2>
 
-    <div id="map"></div>
-  
-    <script src="https://unpkg.com/@googlemaps/js-api-loader@1.x/dist/index.min.js"></script>
-  </body>
+  <!-- Search Input for Autocomplete -->
+  <label for="search-input">Search for a place:</label>
+  <input type="text" id="search-input" name="search-input">
+
+  <!-- Button to Add to Favorites -->
+  <button id="favorite-button">Add to Favorites</button>
+
+  <!-- List to Display Favorite Searches -->
+  <ul id="favorites-list"></ul>
+
+  <div id="map" style="height: 500px;"></div>
+
+  <script src="https://unpkg.com/@googlemaps/js-api-loader@1.x/dist/index.min.js"></script>
+</body>
 </html>
