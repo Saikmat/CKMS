@@ -1,7 +1,104 @@
+#header {
+  display: flex;
+  align-items: center;
+  height: 10vw;
+  width: 100%;
+  background-color: black;
+}
+
+#titletxt {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: rgb(253, 181, 21);
+  font-size: 5vw;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+}
+
+#logo {
+  margin-left: 2vw;
+  height: 4vw;
+}
+
 #map {
   height: 100%;
   width: 75%;
   margin: auto;
+}
+
+#searchbar {
+  background-color: rgb(99, 100, 102);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4vw;
+  padding: 1vw;
+}
+
+#accessible-txt {
+  text-align: center;
+  color: white;
+  padding: 1vw;
+  font-size: 2vw;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+}
+
+#weather-txt {
+  text-align: center;
+  color: white;
+  padding: 1vw;
+  font-size: 2vw;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+}
+
+#pac-input {
+  width: 30vw;
+  height: 2vw;
+  text-align: left;
+  text-indent: 1em;
+  border-radius: 25px;
+  border-color: transparent;
+  padding: 0.5vw;
+  font-size: 1.5vw;
+}
+
+#footer {
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  height: 10vw;
+  width: 100%;
+  background-color: black;
+}
+
+#footer-button {
+  margin-left: 2vw;
+  text-align: left;
+  color: black;
+  font-size: 2vw;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+  padding: 1.5vw;
+  background-color: rgb(253, 181, 21);
+  cursor: pointer;
+  border: none;
+  border-radius: 1vw;
+}
+
+#footer-button:hover {
+  background-color: rgb(166, 122, 5);
 }
 
 html, body {
