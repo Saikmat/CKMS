@@ -1,6 +1,7 @@
 import { Loader } from "@googlemaps/js-api-loader";
 
-var routeDisplay = new function(){
+// Route display functionality
+var routeDisplay = new function() {
   let self = this;
   self.directionsService;
   self.directionsRenderer;
@@ -9,93 +10,89 @@ var routeDisplay = new function(){
   self.origin;
   self.dest;
 
-  self.setup = function(map){
+  self.setup = function(map) {
     self.directionsService = new google.maps.DirectionsService();
-    self.directionsRenderer = new google.maps.DirectionsRenderer({preserveViewport: true});
+    self.directionsRenderer = new google.maps.DirectionsRenderer({ preserveViewport: true });
     self.map = map;
     self.directionsRenderer.setMap(map);
-  }
+  };
 
-  self.setPoints = function(origin, dest){
+  self.setPoints = function(origin, dest) {
     self.origin = origin;
     self.dest = dest;
-  }
+  };
 
-  self.render = function(){
+  self.render = function() {
     self.directionsService.route({
       origin: self.origin,
       destination: self.dest,
       travelMode: google.maps.TravelMode.WALKING
-    }, function(response, status){
-      if(status === "OK"){
+    }, function(response, status) {
+      if (status === "OK") {
         self.directionsRenderer.setDirections(response);
-      }
-      else{
+      } else {
         console.log('Directions request failed due to ' + status);
       }
-    })
-  }
-}
+    });
+  };
+};
 
 const locations = [["Building Name", "Building Abbreviation", "Building Category", "On Google (Y/N)"],
-  ["Albin O. Kuhn Library & Gallery", "AOK Library", "Academic", "Y"],
-  ["Public Policy Building", "PUP", "Academic", "Y"],
-  ["Physics Building", "PHYS", "Academic", "Y"],
-  ["The Commons", "", "Academic", "Y"],
-  ["Interdisciplinary Life Sciences Building", "ILSB", "Academic", "Y"],
-  ["Lecture Hall 1", "", "Academic", "Y"],
-  ["Biological Sciences Building", "BIOL", "Academic", "Y"],
-  ["Meyerhoff Building", "MEYR", "Academic", "Y"],
-  ["Fine Arts Building", "FA", "Academic", "Y"],
-  ["Math & Psychology Building", "MP", "Academic", "Y"],
-  ["University Center", "UC", "Academic", "Y"],
-  ["Engineering Building", "ENGR", "Academic", "Y"],
-  ["Sondheim Hall", "SOND", "Academic", "Y"],
-  ["Sherman Hall", "SHER", "Academic", "Y"],
-  ["Information Technology / Engineering Building", "ITE", "Academic", "Y"],
-  ["Retriever Activies Center", "RAC", "Recreation", "Y"],
-  ["Administration Building", "ADM", "Academic", "Y"],
-  ["Performing Arts and Humantities Building", "PAHB", "Academic", "Y"],
-  ["Susquehanna Hall", "", "Housing", "Y"],
-  ["Patapsco Hall", "", "Housing", "Y"],
-  ["Potomac Hall", "", "Housing", "Y"],
-  ["Chesapeake Hall", "", "Housing", "Y"],
-  ["Harbor Hall", "", "Housing", "Y"],
-  ["Erickson Hall", "", "Housing", "Y"],
-  ["Hillside Apartments", "", "Housing", "Y"],
-  ["Terrace Apartments", "", "Housing", "has circle"],
-  ["West Hill Apartments", "", "Housing", "Y"],
-  ["Walker Avenue Apartments", "", "Housing", "Y"],
-  ["Apartment Community Center", "ACC", "Miscellaneous", "Y"],
-  ["The Center for Well-Being", "", "Health Center", "Y"],
-  ["True Grit's", "", "Food", "Y"],
-  ["Preschool Center", "", "Miscellaneous", "Y"],
-  ["Chesapeake Arena", "", "Recreation", "Y"],
-  ["Warehouse", "", "Miscellaneous", "Y"],
-  ["Facilities Management", "", "Miscellaneous", "Y"],
-  ["UMBC Stadium Complex", "", "Recreation", "Y"],
-  ["Administration Drive Garage", "", "Parking", "Y"],
-  ["900 Walker", "", "Miscellaneous", "Y"],
-  ["Army ROTC", "", "Miscellaneous", "Y"],
-  ["Naval ROTC", "", "Miscellaneous", "Y"],
-  ["Central Plant", "", "Miscellaneous", "Y"],
-  ["Greenhouse", "", "Miscellaneous", "Y"],
-  ["Undergraduate Admissions", "", "Academic", "Y"],
-  ["Enrollment Management", "", "Academic", "N"],
-  ["Financial Aid and Scholarships", "", "Academic", "Y"],
-  ["Commons Drive Garage", "", "Parking", "Y"],
-  ["Walker Avenue Garage", "", "Parking", "Y"],
-  ["Lot 7", "", "Parking", "Y"],
-  ["Lot 9", "", "Parking", "Y"],
-  ["Stadium Lot", "", "Parking", "Y"],
-  ["Lot 8", "", "Parking", "Y"]
+    ["Albin O. Kuhn Library & Gallery", "AOK Library", "Academic", "Y"],
+    ["Public Policy Building", "PUP", "Academic", "Y"],
+    ["Physics Building", "PHYS", "Academic", "Y"],
+    ["The Commons", "", "Academic", "Y"],
+    ["Interdisciplinary Life Sciences Building", "ILSB", "Academic", "Y"],
+    ["Lecture Hall 1", "", "Academic", "Y"],
+    ["Biological Sciences Building", "BIOL", "Academic", "Y"],
+    ["Meyerhoff Building", "MEYR", "Academic", "Y"],
+    ["Fine Arts Building", "FA", "Academic", "Y"],
+    ["Math & Psychology Building", "MP", "Academic", "Y"],
+    ["University Center", "UC", "Academic", "Y"],
+    ["Engineering Building", "ENGR", "Academic", "Y"],
+    ["Sondheim Hall", "SOND", "Academic", "Y"],
+    ["Sherman Hall", "SHER", "Academic", "Y"],
+    ["Information Technology / Engineering Building", "ITE", "Academic", "Y"],
+    ["Retriever Activies Center", "RAC", "Recreation", "Y"],
+    ["Administration Building", "ADM", "Academic", "Y"],
+    ["Performing Arts and Humantities Building", "PAHB", "Academic", "Y"],
+    ["Susquehanna Hall", "", "Housing", "Y"],
+    ["Patapsco Hall", "", "Housing", "Y"],
+    ["Potomac Hall", "", "Housing", "Y"],
+    ["Chesapeake Hall", "", "Housing", "Y"],
+    ["Harbor Hall", "", "Housing", "Y"],
+    ["Erickson Hall", "", "Housing", "Y"],
+    ["Hillside Apartments", "", "Housing", "Y"],
+    ["Terrace Apartments", "", "Housing", "has circle"],
+    ["West Hill Apartments", "", "Housing", "Y"],
+    ["Walker Avenue Apartments", "", "Housing", "Y"],
+    ["Apartment Community Center", "ACC", "Miscellaneous", "Y"],
+    ["The Center for Well-Being", "", "Health Center", "Y"],
+    ["True Grit's", "", "Food", "Y"],
+    ["Preschool Center", "", "Miscellaneous", "Y"],
+    ["Chesapeake Arena", "", "Recreation", "Y"],
+    ["Warehouse", "", "Miscellaneous", "Y"],
+    ["Facilities Management", "", "Miscellaneous", "Y"],
+    ["UMBC Stadium Complex", "", "Recreation", "Y"],
+    ["Administration Drive Garage", "", "Parking", "Y"],
+    ["900 Walker", "", "Miscellaneous", "Y"],
+    ["Army ROTC", "", "Miscellaneous", "Y"],
+    ["Naval ROTC", "", "Miscellaneous", "Y"],
+    ["Central Plant", "", "Miscellaneous", "Y"],
+    ["Greenhouse", "", "Miscellaneous", "Y"],
+    ["Undergraduate Admissions", "", "Academic", "Y"],
+    ["Enrollment Management", "", "Academic", "N"],
+    ["Financial Aid and Scholarships", "", "Academic", "Y"],
+    ["Commons Drive Garage", "", "Parking", "Y"],
+    ["Walker Avenue Garage", "", "Parking", "Y"],
+    ["Lot 7", "", "Parking", "Y"],
+    ["Lot 9", "", "Parking", "Y"],
+    ["Stadium Lot", "", "Parking", "Y"],
+    ["Lot 8", "", "Parking", "Y"]
 ];
 
-
-async function initMap(){
-  const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-
-  const center = {lat: 39.254752, lng: -76.710837};
+async function initMap() {
+  const center = { lat: 39.254752, lng: -76.710837 }; // Your center coordinates
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 17,
     center: center,
@@ -111,22 +108,28 @@ async function initMap(){
     },
     mapId: import.meta.env.VITE_MAP_ID,
   });
+
+  // Set route origin and destination
+  let origin = "Meyerhoff Building";
+  let dest = "Albin O. Kuhn Library and Gallery";
   routeDisplay.setup(map);
   let markers = [];
 
+  // Setup Place Search (autocomplete input for search)
   const input = document.getElementById("pac-input");
   const searchBox = new google.maps.places.Autocomplete(input, {
-    fields: ["place_id", "geometry", "formatted_address", "name"], 
+    fields: ["place_id", "geometry", "formatted_address", "name"],
     strictBounds: true,
   });
 
 
   map.controls[google.maps.ControlPosition.TOP_RIGHT].push(input);
+
   map.addListener("bounds_changed", () => {
     searchBox.bindTo("bounds", map);
   });
 
-  const flag = document.createElement('img');  
+  const flag = document.createElement('img');
   flag.src = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
   const commonsMarkerView = new AdvancedMarkerElement({
     map,
@@ -145,7 +148,7 @@ async function initMap(){
       if(!place.geometry || !place.geometry.location){
         return;
       }
-      
+
       const marker = new AdvancedMarkerElement({
         map,
         position: place.geometry.location,
@@ -158,10 +161,94 @@ async function initMap(){
           map: map,
           anchor: marker
         })
-      });
+    });
       markers.push(marker);
   });
+
+  // Initialize Autocomplete for favorite search feature
+  const autocompleteInput = document.getElementById('search-input');
+  const autocomplete = new google.maps.places.Autocomplete(autocompleteInput);
+
+  // Listen for place changes
+  autocomplete.addListener('place_changed', () => {
+    const place = autocomplete.getPlace();
+    if (!place.geometry) {
+      window.alert("No details available for input: '" + place.name + "'");
+      return;
+    }
+
+    console.log("Selected place:", place);
+
+    // Add to favorites
+    const favoriteButton = document.getElementById('favorite-button');
+    favoriteButton.addEventListener('click', () => {
+      saveFavoriteSearch(place);
+    });
+  });
+
+  // Building markers with descriptions
+  const buildings = [
+    {
+      name: "Meyerhoff Building",
+      coordinates: { lat: 39.2532, lng: -76.7111 },
+      description: "This is the Meyerhoff Building, a notable landmark in the area."
+    },
+    {
+      name: "Albin O. Kuhn Library and Gallery",
+      coordinates: { lat: 39.2538, lng: -76.7104 },
+      description: "Albin O. Kuhn Library and Gallery offers a variety of academic resources."
+    }
+  ];
+
+  // Add markers and info windows for each building
+  buildings.forEach(building => {
+    const marker = new google.maps.Marker({
+      position: building.coordinates,
+      map: map,
+      title: building.name,
+    });
+
+    const infoWindowContent = `
+      <div>
+        <h3>${building.name}</h3>
+        <p>${building.description}</p>
+      </div>
+    `;
+
+    const infoWindow = new google.maps.InfoWindow({
+      content: infoWindowContent,
+    });
+
+    marker.addListener("click", () => {
+      infoWindow.open(map, marker);
+    });
+  });
 }
+
+// Save favorite search to local storage
+function saveFavoriteSearch(place) {
+  let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+  favorites.push(place);
+  localStorage.setItem('favorites', JSON.stringify(favorites));
+  displayFavoriteSearches(); // Update favorites display
+}
+
+// Retrieve and display favorite searches
+function displayFavoriteSearches() {
+  const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+  const favoritesList = document.getElementById('favorites-list');
+  favoritesList.innerHTML = ''; // Clear the list before displaying
+  favorites.forEach(place => {
+    const listItem = document.createElement('li');
+    listItem.textContent = place.name;
+    favoritesList.appendChild(listItem);
+  });
+}
+
+// Call this function when the page loads to display favorites
+window.onload = function() {
+  displayFavoriteSearches();
+};
 
 const loader = new Loader({
   apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
@@ -172,5 +259,5 @@ const loader = new Loader({
 loader.load().then(async () => {
   initMap();
 }).catch((e) => {
-  console.log("Failed to load api " + e);
+  console.log("Failed to load API " + e);
 });
