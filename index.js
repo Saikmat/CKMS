@@ -1,6 +1,7 @@
 import { Loader } from "@googlemaps/js-api-loader";
 
-var routeDisplay = new function(){
+// Route display functionality
+var routeDisplay = new function() {
   let self = this;
   self.directionsService;
   self.directionsRenderer;
@@ -9,33 +10,32 @@ var routeDisplay = new function(){
   self.origin;
   self.dest;
 
-  self.setup = function(map){
+  self.setup = function(map) {
     self.directionsService = new google.maps.DirectionsService();
-    self.directionsRenderer = new google.maps.DirectionsRenderer({preserveViewport: true});
+    self.directionsRenderer = new google.maps.DirectionsRenderer({ preserveViewport: true });
     self.map = map;
     self.directionsRenderer.setMap(map);
-  }
+  };
 
-  self.setPoints = function(origin, dest){
+  self.setPoints = function(origin, dest) {
     self.origin = origin;
     self.dest = dest;
-  }
+  };
 
-  self.render = function(){
+  self.render = function() {
     self.directionsService.route({
       origin: self.origin,
       destination: self.dest,
       travelMode: google.maps.TravelMode.WALKING
-    }, function(response, status){
-      if(status === "OK"){
+    }, function(response, status) {
+      if (status === "OK") {
         self.directionsRenderer.setDirections(response);
-      }
-      else{
+      } else {
         console.log('Directions request failed due to ' + status);
       }
-    })
-  }
-}
+    });
+  };
+};
 
 const locations = [["Building Name", "Building Abbreviation", "Building Category", "On Google (Y/N)"],
   ["Albin O. Kuhn Library & Gallery", "AOK Library", "Academic", "Y"],
@@ -119,10 +119,10 @@ function searchBoxInitialization(searchBox, markers, AdvancedMarkerElement, map)
   });
 }
 
-export async function initMap(){
+export async function initMap() {
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
-  const center = {lat: 39.254752, lng: -76.710837};
+  const center = { lat: 39.254752, lng: -76.710837 };
 
   function getMap() {
     return new google.maps.Map(document.getElementById("map"), {
@@ -146,6 +146,7 @@ export async function initMap(){
   routeDisplay.setup(map);
   let markers = [];
 
+  // Setup Place Search (autocomplete input for search)
   const input = document.getElementById("pac-input");
   const searchBox = new google.maps.places.Autocomplete(input, {
     fields: ["place_id", "geometry", "formatted_address", "name"], 
@@ -154,11 +155,12 @@ export async function initMap(){
 
 
   map.controls[google.maps.ControlPosition.TOP_RIGHT].push(input);
+
   map.addListener("bounds_changed", () => {
     searchBox.bindTo("bounds", map);
   });
 
-  const flag = document.createElement('img');  
+  const flag = document.createElement('img');
   flag.src = "./assets/UMBC_Retriever_Head.png";
   const commonsMarkerView = new AdvancedMarkerElement({
     map,
@@ -168,6 +170,31 @@ export async function initMap(){
 
   searchBoxInitialization(searchBox, markers, AdvancedMarkerElement, map);
 }
+
+// Save favorite search to local storage
+function saveFavoriteSearch(place) {
+  let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+  favorites.push(place);
+  localStorage.setItem('favorites', JSON.stringify(favorites));
+  displayFavoriteSearches(); // Update favorites display
+}
+
+// Retrieve and display favorite searches
+function displayFavoriteSearches() {
+  const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+  const favoritesList = document.getElementById('favorites-list');
+  favoritesList.innerHTML = ''; // Clear the list before displaying
+  favorites.forEach(place => {
+    const listItem = document.createElement('li');
+    listItem.textContent = place.name;
+    favoritesList.appendChild(listItem);
+  });
+}
+
+// Call this function when the page loads to display favorites
+window.onload = function() {
+  displayFavoriteSearches();
+};
 
 const loader = new Loader({
   apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
