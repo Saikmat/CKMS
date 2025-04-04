@@ -116,8 +116,6 @@ function searchBoxInitialization(searchBox, markers, AdvancedMarkerElement, map)
       infoWindow.open(map, marker)
     });
     markers.push(marker);
-  });
-}
 
 export async function initMap() {
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
@@ -168,7 +166,66 @@ export async function initMap() {
     content: flag,
   });
 
-  searchBoxInitialization(searchBox, markers, AdvancedMarkerElement, map);
+  // Initialize Autocomplete for favorite search feature
+  const autocompleteInput = document.getElementById('search-input');
+  const autocomplete = new google.maps.places.Autocomplete(autocompleteInput);
+
+  // Listen for place changes
+  autocomplete.addListener('place_changed', () => {
+    const place = autocomplete.getPlace();
+    if (!place.geometry) {
+      window.alert("No details available for input: '" + place.name + "'");
+      return;
+    }
+
+    console.log("Selected place:", place);
+
+    // Add to favorites
+    const favoriteButton = document.getElementById('favorite-button');
+    favoriteButton.addEventListener('click', () => {
+      saveFavoriteSearch(place);
+    });
+  });
+
+  // Building markers with descriptions
+  const buildings = [
+    {
+      name: "Meyerhoff Building",
+      coordinates: { lat: 39.2532, lng: -76.7111 },
+      description: "This is the Meyerhoff Building, a notable landmark in the area."
+    },
+    {
+      name: "Albin O. Kuhn Library and Gallery",
+      coordinates: { lat: 39.2538, lng: -76.7104 },
+      description: "Albin O. Kuhn Library and Gallery offers a variety of academic resources."
+    }
+  ];
+
+  // Add markers and info windows for each building
+  buildings.forEach(building => {
+    const marker = new google.maps.Marker({
+      position: building.coordinates,
+      map: map,
+      title: building.name,
+    });
+
+    const infoWindowContent = `
+      <div>
+        <h3>${building.name}</h3>
+        <p>${building.description}</p>
+      </div>
+    `;
+
+    const infoWindow = new google.maps.InfoWindow({
+      content: infoWindowContent,
+    });
+
+    marker.addListener("click", () => {
+      infoWindow.open(map, marker);
+    });
+  });
+
+    searchBoxInitialization(searchBox, markers, AdvancedMarkerElement, map);
 }
 
 // Save favorite search to local storage
@@ -206,5 +263,5 @@ const loader = new Loader({
 loader.importLibrary("routes").then(async () => {
   await initMap();
 }).catch((e) => {
-  console.log("Failed to load api " + e);
+  console.log("Failed to load API " + e);
 });
