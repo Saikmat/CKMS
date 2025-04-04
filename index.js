@@ -116,6 +116,8 @@ function searchBoxInitialization(searchBox, markers, AdvancedMarkerElement, map)
       infoWindow.open(map, marker)
     });
     markers.push(marker);
+  });
+}
 
 export async function initMap() {
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
@@ -160,6 +162,7 @@ export async function initMap() {
 
   const flag = document.createElement('img');
   flag.src = "./assets/UMBC_Retriever_Head.png";
+  flag.id = "commons-marker-icon";
   const commonsMarkerView = new AdvancedMarkerElement({
     map,
     position: center,
