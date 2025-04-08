@@ -49,11 +49,18 @@ Make sure you have the following software installed:
    ```
 
 3. Run the website locally:
-   ```bash
-   npm start
-   ```
+   a.
+      ```bash
+      npm start
+      ```
 
-   This will launch the map website at `http://localhost:3000`.
+      This will launch the map website at `http://localhost:3000`.
+   b. 
+      ```bash
+      vite
+      ``` 
+      Vite is being actively supported, and is much lighter weight.
+      This will launch the map website at `http://localhost:5173`.
 
 ## How to Contribute
 
@@ -63,6 +70,12 @@ We welcome contributions to improve the UMBC Interactive Map. Here's how you can
    ```bash
    git checkout -b feature/your-feature-name
    ```
+   
+    To connect your branch to an issue, use this
+    ```bash
+    git checkout -b CKMS-<issue number>-dev
+    ```
+
 
 2. **Make changes** and commit them:
    ```bash
@@ -73,7 +86,9 @@ We welcome contributions to improve the UMBC Interactive Map. Here's how you can
    ```bash
    git push origin feature/your-feature-name
    ```
+    ```bash
 
+```
 4. **Create a pull request**.
 
 ## Features to Implement
