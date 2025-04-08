@@ -73,6 +73,11 @@
   font-size: 1.5vw;
 }
 
+#commons-marker-icon {
+  width: 30px;
+  height: auto;
+}
+
 #footer {
   bottom: 0;
   display: flex;

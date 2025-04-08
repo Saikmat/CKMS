@@ -77,6 +77,12 @@ We welcome contributions to improve the UMBC Interactive Map. Here's how you can
    ```bash
    git checkout -b feature/your-feature-name
    ```
+   
+    To connect your branch to an issue, use this
+    ```bash
+    git checkout -b CKMS-<issue number>-dev
+    ```
+
 
 2. **Make changes** and commit them:
    ```bash
@@ -87,7 +93,9 @@ We welcome contributions to improve the UMBC Interactive Map. Here's how you can
    ```bash
    git push origin feature/your-feature-name
    ```
+    ```bash
 
+```
 4. **Create a pull request**.
 
 ---
