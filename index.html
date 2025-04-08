@@ -10,18 +10,23 @@
   </head>
   <body>
     <div id="header">
-      <img src="UMBC-primary-logo-CMYK-on-black.png" id="logo"></img>
+      <img src="UMBC-primary-logo-CMYK-on-black.png" id="logo" alt="UMBC Logo"></img>
       <h1 id="titletxt">Interactive Map</h1>
     </div>
 
     <div id="searchbar">
-      <input type="text" id="pac-input" name="pac-input" placeholder="Enter a location"></input>
+      <label for="pac-input"></label>
+      <input type="text" id="pac-input" name="pac-input" placeholder="Enter a location">
       <a id="accessible-txt">Accessible Routes</a>
       <a id="weather-txt">Weather Routes</a>
     </div>
 
-  <!-- Button to Add to Favorites -->
-  <button id="favorite-button">Add to Favorites</button>
+    <!-- Search Input for Autocomplete -->
+    <label for="search-input">Search for a place to favorite:</label>
+    <input type="text" id="search-input" name="search-input">  
+
+    <!-- Button to Add to Favorites -->
+    <button id="favorite-button">Add to Favorites</button>
 
   <!-- List to Display Favorite Searches -->
   <ul id="favorites-list"></ul>
