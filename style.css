@@ -1,7 +1,7 @@
 #header {
   display: flex;
   align-items: center;
-  height: 10vw;
+  height: 7vw;
   width: 100%;
   background-color: black;
 }
@@ -35,11 +35,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 4vw;
+  height: 2vw;
   padding: 1vw;
 }
 
-#nav-txt {
+#index-nav-txt {
   text-align: center;
   color: white;
   padding: 1vw;
@@ -51,7 +51,39 @@
   text-decoration: none;
 }
 
-#nav-txt:hover {
+#index-nav-txt:hover {
+  color: black;
+}
+
+#accessible-nav-txt {
+  text-align: center;
+  color: white;
+  padding: 1vw;
+  font-size: 2vw;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: none;
+}
+
+#accessible-nav-txt:hover {
+  color: black;
+}
+
+#weather-nav-txt {
+  text-align: center;
+  color: white;
+  padding: 1vw;
+  font-size: 2vw;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: none;
+}
+
+#weather-nav-txt:hover {
   color: black;
 }
 
