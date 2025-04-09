@@ -83,7 +83,6 @@ We welcome contributions to improve the UMBC Interactive Map. Here's how you can
     git checkout -b CKMS-<issue number>-dev
     ```
 
-
 2. **Make changes** and commit them:
    ```bash
    git commit -m "Add your feature"
