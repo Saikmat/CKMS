@@ -1,7 +1,7 @@
 #header {
   display: flex;
   align-items: center;
-  height: 10vw;
+  height: 7vw;
   width: 100%;
   background-color: black;
 }
@@ -28,6 +28,7 @@
   height: 100%;
   width: 75%;
   margin: auto;
+  padding-bottom: 7vw;
 }
 
 #searchbar {
@@ -35,7 +36,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 4vw;
+  height: 2vw;
   padding: 1vw;
 }
 
@@ -81,7 +82,7 @@
   bottom: 0;
   display: flex;
   align-items: center;
-  height: 10vw;
+  height: 4vw;
   width: 100%;
   background-color: black;
 }
@@ -90,16 +91,16 @@
   margin-left: 2vw;
   text-align: left;
   color: black;
-  font-size: 2vw;
+  font-size: 1vw;
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   font-weight: bold;
   font-style: normal;
-  padding: 1.5vw;
+  padding: 1vw;
   background-color: rgb(253, 181, 21);
   cursor: pointer;
   border: none;
-  border-radius: 1vw;
+  border-radius: 0.5vw;
 }
 
 #footer-button:hover {
