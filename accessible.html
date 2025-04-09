@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>UMBC Map</title>
+    <script type="module" src="./index.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="header">
+      <img src="./assets/UMBC-primary-logo-CMYK-on-black.png" id="logo"></img>
+      <h1 id="titletxt">Accessible Routes</h1>
+    </div>
+
+    <div id="searchbar">
+        <a href="index.html "id="index-nav-txt">Interactive Map</a>
+        <a href="weather.html" id="accessible-nav-txt">Weather Routes</a>
+      </div>
+
+    <div id="secondary-container">
+      <embed src="2024-ACCESSIBLE-ROUTES-MAP-2.pdf" id="secondary-img"></embed>
+    </div>
+
+    <div id="footer">
+        <button id="footer-button" onclick="window.open('https\://forms.gle/EBJ5S11ruVYUaRyTA', '_blank')">Provide Feedback</button>
+        <!-- Terms and Conditions, button for site map -->
+    </div>
+
+  <script src="https://unpkg.com/@googlemaps/js-api-loader@1.x/dist/index.min.js"></script>
+</body>
+</html>

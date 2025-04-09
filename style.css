@@ -28,7 +28,6 @@
   height: 100%;
   width: 75%;
   margin: auto;
-  padding-bottom: 7vw;
 }
 
 #searchbar {
@@ -40,26 +39,52 @@
   padding: 1vw;
 }
 
-#accessible-txt {
+#index-nav-txt {
   text-align: center;
   color: white;
   padding: 1vw;
   font-size: 2vw;
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
-  font-weight: bold;
+  font-weight: normal;
   font-style: normal;
+  text-decoration: none;
 }
 
-#weather-txt {
+#index-nav-txt:hover {
+  color: black;
+}
+
+#accessible-nav-txt {
   text-align: center;
   color: white;
   padding: 1vw;
   font-size: 2vw;
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
-  font-weight: bold;
+  font-weight: normal;
   font-style: normal;
+  text-decoration: none;
+}
+
+#accessible-nav-txt:hover {
+  color: black;
+}
+
+#weather-nav-txt {
+  text-align: center;
+  color: white;
+  padding: 1vw;
+  font-size: 2vw;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: none;
+}
+
+#weather-nav-txt:hover {
+  color: black;
 }
 
 #pac-input {
@@ -78,11 +103,17 @@
   height: auto;
 }
 
+embed {
+  margin: 0;
+  padding: 0;
+}
+
 #footer {
   bottom: 0;
+  left: 0;
   display: flex;
   align-items: center;
-  height: 4vw;
+  height: 5vw;
   width: 100%;
   background-color: black;
 }
@@ -96,7 +127,7 @@
   font-optical-sizing: auto;
   font-weight: bold;
   font-style: normal;
-  padding: 1vw;
+  padding: 0.75vw;
   background-color: rgb(253, 181, 21);
   cursor: pointer;
   border: none;
@@ -105,6 +136,18 @@
 
 #footer-button:hover {
   background-color: rgb(166, 122, 5);
+}
+
+#secondary-container {
+  background-color: black;
+  height: 100%;
+}
+
+#secondary-img {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 html, body {
