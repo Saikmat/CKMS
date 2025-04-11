@@ -13,7 +13,7 @@ var routeDisplay = new function() {
 
   self.setup = function(map) {
     self.directionsService = new google.maps.DirectionsService();
-    self.directionsRenderer = new google.maps.DirectionsRenderer({ preserveViewport: false });
+    self.directionsRenderer = new google.maps.DirectionsRenderer({ preserveViewport: true });
     self.map = map;
     self.directionsRenderer.setMap(map);
   };
@@ -154,24 +154,24 @@ export async function initMap() {
 /*
   // Add markers and info windows for each building
   buildings.forEach(building => {
-    if (!isNaN(building.coordinates.lat)){
-      const marker = new google.maps.marker.AdvancedMarkerElement({
-        position: building.coordinates,
-        map: map,
-        title: building.name,
-        children: umbcRetrieverHead
-      });
+    if (isNaN(building.coordinates))
+    const marker = new google.maps.marker.AdvancedMarkerElement({
+      position: building.coordinates,
+      map: map,
+      title: building.name,
+      children: umbcRetrieverHead
+    });
 
-      const infoWindowContent = `
+    const infoWindowContent = `
       <div>
         <h3>${building.name}</h3>
         <p>${building.description}</p>
       </div>
     `;
 
-      const infoWindow = new google.maps.InfoWindow({
-        content: infoWindowContent,
-      });
+    const infoWindow = new google.maps.InfoWindow({
+      content: infoWindowContent,
+    });
 
       marker.addListener("gmp-click", () => {
         infoWindow.open(map, marker);
