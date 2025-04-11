@@ -53,7 +53,7 @@ function searchBoxInitialization(searchBox, markers, AdvancedMarkerElement, map)
     }
 
     //Add the description if it exists
-    let content = "<h1>" + place.name + "</h1>";
+    let content = "<h1 style='font-family: \"Inter\", sans-serif;'>" + place.name + "</h1>";
     let desc = destinations.buildings.find(b => b.name === place.name);
     if(desc != undefined){
       content += "<p>" + desc.description + "</p>";
@@ -108,7 +108,7 @@ export async function initMap() {
     strictBounds: true,
   });
 
-  map.controls[google.maps.ControlPosition.TOP_RIGHT].push(input);
+  map.controls[google.maps.ControlPosition.TOP_RIGHT].push(document.getElementById("searchbar"));
 
   map.addListener("bounds_changed", () => {
     searchBox.bindTo("bounds", map);

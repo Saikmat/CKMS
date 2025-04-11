@@ -3,7 +3,6 @@
   <head>
     <title>UMBC Map</title>
     <script type="module" src="./index.js"></script>
-    <script type="module" src="./destinations.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,27 +10,33 @@
   </head>
   <body>
     <div id="header">
-      <img src="./assets/UMBC-primary-logo-CMYK-on-black.png" id="logo" alt="UMBC Logo">
+      <img src="./assets/UMBC-primary-logo-CMYK-on-black.png" id="logo"></img>
       <h1 id="titletxt">Interactive Map</h1>
-      <a href="index.html" id="homelink"></a>
     </div>
 
     <div id="searchbar">
-      <input type="text" id="pac-input" name="pac-input" placeholder="Enter a location">
-      <a href="accessible.html" id="accessible-nav-txt">Accessible Routes</a>
-      <a href="weather.html" id="weather-nav-txt">Weather Routes</a>
+      <input type="text" id="pac-input" name="pac-input" placeholder="Enter your starting location"></input>
+      <div id="searchbar2">
+        <input type="text" id="origin-input" name="origin-input" placeholder="Enter your destination"></input>
+        <button id="search-button">View Routes</button>
+        <button id="search-button">Clear</button>
+      </div>
     </div>
 
-    <!-- Search Input for Autocomplete -->
-    <!-- <label for="search-input">Search for a place:</label> -->
-    <!-- <input type="text" id="search-input" name="search-input">  -->
+    <div id="navbar">
+      <a href="accessible.html" id="nav-txt">Accessible Routes</a>
+      <a href="weather.html" id="nav-txt">Weather Routes</a>
+    </div>
 
+    <!-- Search Input for Autocomplete 
+    <label for="search-input">Search for a place:</label>
+    <input type="text" id="search-input" name="search-input">  
 
-    <!-- Button to Add to Favorites -->
-   <!-- <button id="favorite-button">Add to Favorites</button> -->
+    Button to Add to Favorites
+    <button id="favorite-button">Add to Favorites</button>
 
-    <!-- List to Display Favorite Searches -->
-    <!-- <ul id="favorites-list"></ul> -->
+    List to Display Favorite Searches
+    <ul id="favorites-list"></ul> -->
 
     <div id="map" style="height: 100%;"></div>
     <div id="footer">
