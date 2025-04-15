@@ -108,7 +108,7 @@ export async function initMap() {
     strictBounds: true,
   });
 
-  map.controls[google.maps.ControlPosition.TOP_RIGHT].push(document.getElementById("searchbar"));
+  //map.controls[google.maps.ControlPosition.TOP_RIGHT].push(document.getElementById("searchbar"));
 
   map.addListener("bounds_changed", () => {
     searchBox.bindTo("bounds", map);
