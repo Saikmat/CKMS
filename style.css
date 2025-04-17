@@ -81,6 +81,21 @@
   cursor: pointer;
 }
 
+#clear-button {
+  margin-right: 15px;
+  border-radius: 10px;
+  height: 2vw;
+  width: 7vw;
+  color: black;
+  font-size: 0.75vw;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+  background-color: rgb(253, 181, 21);
+  cursor: pointer;
+}
+
 #search-button:hover {
   background-color: rgb(166, 122, 5);
 }
@@ -118,7 +133,7 @@
   color: white;
 }
 
-#pac-input {
+#origin-input {
   width: 90%;
   height: 1vw;
   text-align: left;
@@ -130,7 +145,7 @@
   border: 2px solid black;
 }
 
-#origin-input {
+#dest-input {
   width: 90%;
   height: 1vw;
   text-align: left;
