@@ -55,7 +55,7 @@ function searchBoxInitialization(searchBox, markers, AdvancedMarkerElement, map)
     //Add the description if it exists
     let content = "<h1 style='font-family: \"Inter\", sans-serif;'>" + place.name + "</h1>";
     let desc = destinations.buildings.find(b => b.name === place.name);
-    if(desc != undefined){
+    if(desc !== undefined){
       content += "<p>" + desc.description + "</p>";
     }
 
