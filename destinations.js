@@ -4,43 +4,50 @@ export const destinations = [
     name: "Office for Academic and Pre-Professional Advising",
     location: "Sherman Room 224",
     category: "Professional",
-    onGoogle: "N"
+    onGoogle: "N",
+    description: "The mission of the Office for Academic & Pre-Professional Advising (OAPA) is to empower all undergraduate students at UMBC to make informed decisions about their academic pathways; to support exploratory, pre-allied health, and incoming students specifically; and to lead the campus coordination of academic advising through training, assessment, and support."
   },
   {
     name: "Financial Services",
     location: "Administration Floors 3 and 4",
     category: "Professional",
-    onGoogle: "N"
+    onGoogle: "N",
+    description: "The Financial Services Department at University of Maryland, Baltimore County oversees the Accounting and Financial Reporting, Accounts Receivable, Accounts Payable, Budget and Resource Analysis, Cash Management, Plant Accounting and Inventory, Debt Management, Contracts and Grants, Commitment Accounting, Financial System, and Student Accounts and Payments."
   },
   {
     name: "Administration and Finance",
     location: "Administration Room 925",
     category: "Professional",
-    onGoogle: "N"
+    onGoogle: "N",
+    description: "The Administration and Finance Division serves UMBC’s core mission of instruction, research and service through strong financial management and stewardship, compassionate and professional human resource leadership, effective business services and infrastructure, and by sustaining a safe and attractive campus."
   },
   {
     name: "UMBC Bookstore",
     location: "The Commons Level 1",
     category: "Academic",
-    onGoogle: "Y"
+    onGoogle: "Y",
+    description: "The UMBC Bookstore is proudly owned and operated by UMBC. All purchases made here support UMBC students and campus programs. While remaining financially responsible, the UMBC Bookstore is committed to providing all required and recommended course materials and supplies to the UMBC Community at a reasonable price in a timely manner. We offer our knowledge, goods, and services in order to help foster intellectual growth, enhance the quality of life in our community, and broaden the personal, educational, and professional experiences of our customers."
   },
   {
     name: "Office of Budget and Resource Analysis",
     location: "Administration Floor 4",
     category: "Professional",
-    onGoogle: "N"
+    onGoogle: "N",
+    description: "The Office of Budget and Resource Analysis manages UMBC’s  budget and is charged with monitoring the spending, revenue, internal budget adjustments and forecasting for state and non-state funds of the University."
   },
   {
     name: "Career Center",
     location: "Math & Psychology Room 201",
     category: "Professional",
-    onGoogle: "N"
+    onGoogle: "N",
+    description: "The UMBC Career Center, within the Division of Student Affairs, aims to empower all students and graduates to create their own success stories. We work with students at every academic level, from first-year freshmen to graduate students. Our services include career advising and counseling, networking events, on-campus recruiting, on-campus interviews, career and professional skills education, and applied learning opportunities (internships, co-ops, and research)."
   },
   {
     name: "Campus Life",
     location: "The Commons Room 336",
     category: "Professional",
-    onGoogle: "N"
+    onGoogle: "N",
+    description: "Campus Life at UMBC significantly shapes the student experience. From getting involved in campus events to joining student organizations, from exploring diverse cultures to learning about spiritual practices, from shaping new leaders to serving local communities, from fraternity and sorority bonds to Student Government board meetings – students create their Campus Life. Students are the reason for it, they make it happen, and they create it with their passions, ideas, dialogues, and programs. Through involvement in the countless student activities, students have the opportunities to meet new people, try new things, and engage in learning opportunities that complement their academic experiences."
   },
   {
     name: "Yum Shoppe",

@@ -1,7 +1,7 @@
 #header {
   display: flex;
   align-items: center;
-  height: 7vw;
+  height: 10vw;
   width: 100%;
   background-color: black;
 }
@@ -25,21 +25,58 @@
 }
 
 #map {
-  height: 95%;
-  width: 90%;
+  height: 100%;
+  width: 75%;
   margin: auto;
 }
 
 #searchbar {
+  width: 40vw;
+  height: 7vw;
+  display: grid;
+  grid-template-columns: auto;
+  align-items: center;
+  column-gap: 5px;
+  background-color: white;
+  border: 2px solid grey;
+  border-radius: 25px;
+  padding: 5px;
+}
+
+#searchbar2 {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  align-items: center;
+}
+
+#search-button {
+  margin-right: 15px;
+  border-radius: 10px;
+  height: 2vw;
+  color: black;
+  font-size: 0.75vw;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+  background-color: rgb(253, 181, 21);
+  cursor: pointer;
+}
+
+#search-button:hover {
+  background-color: rgb(166, 122, 5);
+}
+
+#navbar {
   background-color: rgb(99, 100, 102);
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 2vw;
+  height: 4vw;
   padding: 1vw;
 }
 
-#index-nav-txt {
+#nav-txt {
   text-align: center;
   color: white;
   padding: 1vw;
@@ -51,44 +88,12 @@
   text-decoration: none;
 }
 
-#index-nav-txt:hover {
-  color: black;
-}
-
-#accessible-nav-txt {
-  text-align: center;
-  color: white;
-  padding: 1vw;
-  font-size: 2vw;
-  font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: normal;
-  font-style: normal;
-  text-decoration: none;
-}
-
-#accessible-nav-txt:hover {
-  color: black;
-}
-
-#weather-nav-txt {
-  text-align: center;
-  color: white;
-  padding: 1vw;
-  font-size: 2vw;
-  font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: normal;
-  font-style: normal;
-  text-decoration: none;
-}
-
-#weather-nav-txt:hover {
+#nav-txt:hover {
   color: black;
 }
 
 #pac-input {
-  width: 30vw;
+  width: 25vw;
   height: 2vw;
   text-align: left;
   text-indent: 1em;
@@ -96,7 +101,17 @@
   border-color: transparent;
   padding: 0.5vw;
   font-size: 1.5vw;
-  background-color: rgb(240, 240, 240);
+}
+
+#origin-input {
+  width: 25vw;
+  height: 2vw;
+  text-align: left;
+  text-indent: 1em;
+  border-radius: 25px;
+  border-color: transparent;
+  padding: 0.5vw;
+  font-size: 1.5vw;
 }
 
 #commons-marker-icon {
@@ -114,7 +129,7 @@ embed {
   left: 0;
   display: flex;
   align-items: center;
-  height: 3vw;
+  height: 5vw;
   width: 100%;
   background-color: black;
 }
