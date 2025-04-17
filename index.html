@@ -14,15 +14,6 @@
       <h1 id="titletxt">Interactive Map</h1>
     </div>
 
-    <div id="searchbar">
-      <input type="text" id="pac-input" name="pac-input" placeholder="Enter your starting location"></input>
-      <div id="searchbar2">
-        <input type="text" id="origin-input" name="origin-input" placeholder="Enter your destination"></input>
-        <button id="search-button">View Routes</button>
-        <button id="search-button">Clear</button>
-      </div>
-    </div>
-
     <div id="navbar">
       <a href="accessible.html" id="nav-txt">Accessible Routes</a>
       <a href="weather.html" id="nav-txt">Weather Routes</a>
@@ -37,11 +28,30 @@
 
     List to Display Favorite Searches
     <ul id="favorites-list"></ul> -->
+    <div id="mainpage">
+      <div id="sidebar">
+        <div id="directions" style="padding-top: 15px; padding-bottom: 10px; font-weight: bold;">Search for a Destination</div>
+        <div id="searchbar">
+          <input type="text" id="pac-input" name="pac-input" placeholder="Enter your starting location"></input>
+          <input type="text" id="origin-input" name="origin-input" placeholder="Enter your destination"></input>
+          <div id="buttons">
+            <button id="search-button">View Routes</button>
+            <button id="search-button">Clear</button>
+          </div>
+        </div>
+        <div id="directions">
+          <p style="font-weight: bold">Directions</p>
+          <p>These are a bunch of random words I'm using to fill in space. La la la.</p>
+        </div>
+      </div>
 
-    <div id="map" style="height: 100%;"></div>
+      <div id="map"></div>
+    </div>
+
+    <button id="feedback-button" onclick="window.open('https\://forms.gle/EBJ5S11ruVYUaRyTA', '_blank')">Provide Feedback</button>
+
     <div id="footer">
-        <button id="footer-button" onclick="window.open('https\://forms.gle/EBJ5S11ruVYUaRyTA', '_blank')">Provide Feedback</button>
-        <!-- Terms and Conditions, button for site map -->
+        <p>University of Maryland, Baltimore County &#x2022; 1000 Hilltop Circle, Baltimore, MD 21250<br>Copyright 2025 &copy; All Rights Reserved</p>
     </div>
 
   <script src="https://unpkg.com/@googlemaps/js-api-loader@1.x/dist/index.min.js"></script>
