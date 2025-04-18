@@ -71,38 +71,45 @@ function searchBoxInitialization(searchBox, markers, AdvancedMarkerElement, map)
       return;
     }
 
-    //Add the description if it exists
     let icon = "";
-
     let content = "<div style='max-height: 10vw; max-width: 35vw; overflow: auto;'>"
-    let desc = destinations.destinations.find(b => b.name === place.name);
-
-      //Check that the location exists
-    if(desc !== undefined){
-      if(desc.category === "Food"){
-        icon = "🍽️";
-      }
-      else if(desc.category === "Academic"){
-        icon = "📖";
-      }
-      else if(desc.category === "Professional"){
-        icon = "🏢";
-      }
-      else if(desc.category === "Organization"){
-        icon = "👐";
-      }
-      else if(desc.category === "Health"){
-        icon = "❤️";
-      }
-      else if(desc.category === "Student support"){
-        icon = "🤝";
-      }
-      else if(desc.category === "Housing"){
-        icon = "🏠";
-      }
-      content += "<h1 style='font-family: \"Inter\", sans-serif; font-size: 1vw;'>" + place.name + " " + icon + "</h1>"
-      + "<p style='font-family: \"Inter\", sans-serif; font-size: 0.75vw; font-style: italic'>" + desc.location + "</p>"
+    let desc = destinations.buildings.find(b => b.name === place.name);
+    
+    //Add the building description if applicable
+    if(desc != undefined){
+      content += "<h1 style='font-family: \"Inter\", sans-serif; font-size: 1vw;'>" + place.name + "</h1>"
       + "<p style='font-family: \"Inter\", sans-serif; font-size: 0.75vw;'>" + desc.description + "</p>";
+    }
+    else{
+      desc = destinations.destinations.find(b => b.name === place.name);
+      
+      //Check if a matching POI exists
+      if(desc != undefined){
+        if(desc.category === "Food"){
+          icon = "🍽️";
+        }
+        else if(desc.category === "Academic"){
+          icon = "📖";
+        }
+        else if(desc.category === "Professional"){
+          icon = "🏢";
+        }
+        else if(desc.category === "Organization"){
+          icon = "👐";
+        }
+        else if(desc.category === "Health"){
+          icon = "❤️";
+        }
+        else if(desc.category === "Student support"){
+          icon = "🤝";
+        }
+        else if(desc.category === "Housing"){
+          icon = "🏠";
+        }
+        content += "<h1 style='font-family: \"Inter\", sans-serif; font-size: 1vw;'>" + place.name + " " + icon + "</h1>"
+        + "<p style='font-family: \"Inter\", sans-serif; font-size: 0.75vw; font-style: italic'>" + desc.location + "</p>"
+        + "<p style='font-family: \"Inter\", sans-serif; font-size: 0.75vw;'>" + desc.description + "</p>";
+      }
     }
 
     content += "</div>";
