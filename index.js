@@ -2,20 +2,20 @@ import { Loader } from "@googlemaps/js-api-loader";
 import * as destinations from "./destinations.js";
 
 // Route display functionality
-var routeDisplay = new function() {
+const routeDisplay = new function () {
   this.directionsService;
   this.directionsRenderer;
   this.origin;
   this.dest;
 
-  this.init = function() {
+  this.init = function () {
     this.directionsService = new google.maps.DirectionsService();
-    this.directionsRenderer = new google.maps.DirectionsRenderer({ preserveViewport: true });
-    //can switch preserveViewport to false if we want to zoom into a route 
+    this.directionsRenderer = new google.maps.DirectionsRenderer({preserveViewport: true});
+    //can switch preserveViewport to false if we want to zoom into a route
   };
 
-  this.setOrigin = function(origin) {
-    if(!origin.geometry || !origin.place_id) return;
+  this.setOrigin = function (origin) {
+    if (!origin.geometry || !origin.place_id) return;
 
     this.origin = {
       lat: origin.geometry.location.lat(),
@@ -23,43 +23,40 @@ var routeDisplay = new function() {
     };
   };
 
-  this.setDest = function(dest) {
-    if(!dest.geometry || !dest.place_id) return;
-    
+  this.setDest = function (dest) {
+    if (!dest.geometry || !dest.place_id) return;
+
     this.dest = {
       lat: dest.geometry.location.lat(),
       lng: dest.geometry.location.lng()
     };
   };
 
-  this.render = function(map) {
+  this.render = function (map) {
     this.directionsRenderer.setMap(map);
-    let self = this; //idk why this is important, it just works
+    let self = this; // Suppresses invalid use of this warnings
 
-    if(this.origin !== undefined && this.dest !== undefined){
+    if (this.origin !== undefined && this.dest !== undefined) {
       this.directionsService.route({
         origin: this.origin,
         destination: this.dest,
         travelMode: google.maps.TravelMode.WALKING //Should the mode the adjustable?
-      }, function(response, status) {
+      }, function (response, status) {
         if (status === "OK") {
           self.directionsRenderer.setDirections(response);
-          parseRoute(response.routes[0].legs[0].steps);
+          self.directionsRenderer.setPanel(document.getElementById("directions-region"));
         } else {
           console.log('Directions request failed due to ' + status);
         }
-      });
+      }).then();
     }
   };
 
-  this.hide = function() {
+  this.hide = function () {
     this.directionsRenderer.setMap(null);
   }
 };
 
-function parseRoute(){
-  return "";
-}
 
 function searchBoxInitialization(searchBox, markers, AdvancedMarkerElement, map) {
   searchBox.addListener("place_changed", () => {
@@ -77,45 +74,35 @@ function searchBoxInitialization(searchBox, markers, AdvancedMarkerElement, map)
     //Add the description if it exists
     let icon = "";
 
-    let content = "<div style='max-height: 10vw; max-width: 35vw; overflow: auto;'>";
+    let content = "<div style='max-height: 10vw; max-width: 35vw; overflow: auto;'>"
+    let desc = destinations.destinations.find(b => b.name === place.name);
 
-    let desc = destinations.buildings.find(b => b.name === place.name);
-    //If location is a building
-    if(desc != undefined){
-      content += "<h1 style='font-family: \"Inter\", sans-serif; font-size: 1vw;'>" + place.name + "</h1>"
-      + "<p style='font-family: \"Inter\", sans-serif; font-size: 0.75vw;'>" + desc.description + "</p>";
-    }
-    //If location is POI
-    else{
-      desc = destinations.destinations.find(b => b.name === place.name);
-      
       //Check that the location exists
-      if(desc != undefined){
-        if(desc.category === "Food"){
-          icon = "🍽️";
-        }
-        else if(desc.category === "Academic"){
-          icon = "📖";
-        }
-        else if(desc.category === "Professional"){
-          icon = "🏢";
-        }
-        else if(desc.category === "Organization"){
-          icon = "👐";
-        }
-        else if(desc.category === "Health"){
-          icon = "❤️";
-        }
-        else if(desc.category === "Student support"){
-          icon = "🤝";
-        }
-        else if(desc.category === "Housing"){
-          icon = "🏠";
-        }
-        content += "<h1 style='font-family: \"Inter\", sans-serif; font-size: 1vw;'>" + place.name + " " + icon + "</h1>"
-        + "<p style='font-family: \"Inter\", sans-serif; font-size: 0.75vw; font-style: italic'>" + desc.location + "</p>"
-        + "<p style='font-family: \"Inter\", sans-serif; font-size: 0.75vw;'>" + desc.description + "</p>";
+    if(desc !== undefined){
+      if(desc.category === "Food"){
+        icon = "🍽️";
       }
+      else if(desc.category === "Academic"){
+        icon = "📖";
+      }
+      else if(desc.category === "Professional"){
+        icon = "🏢";
+      }
+      else if(desc.category === "Organization"){
+        icon = "👐";
+      }
+      else if(desc.category === "Health"){
+        icon = "❤️";
+      }
+      else if(desc.category === "Student support"){
+        icon = "🤝";
+      }
+      else if(desc.category === "Housing"){
+        icon = "🏠";
+      }
+      content += "<h1 style='font-family: \"Inter\", sans-serif; font-size: 1vw;'>" + place.name + " " + icon + "</h1>"
+      + "<p style='font-family: \"Inter\", sans-serif; font-size: 0.75vw; font-style: italic'>" + desc.location + "</p>"
+      + "<p style='font-family: \"Inter\", sans-serif; font-size: 0.75vw;'>" + desc.description + "</p>";
     }
 
     content += "</div>";
@@ -134,7 +121,7 @@ function searchBoxInitialization(searchBox, markers, AdvancedMarkerElement, map)
   });
 }
 
-function navButtomInitialization(map){
+function navButtonInitialization(map){
   const showButton = document.getElementById("search-button");
   showButton.addEventListener("click", () => {
     routeDisplay.render(map);
@@ -175,7 +162,7 @@ export async function initMap() {
   // Setup Place Search (autocomplete input for search)
   const originInput = document.getElementById("origin-input");
   const originBox = new google.maps.places.Autocomplete(originInput, {
-    fields: ["place_id", "geometry", "formatted_address", "name"], 
+    fields: ["place_id", "geometry", "formatted_address", "name"],
     strictBounds: true,
   });
   originBox.addListener("place_changed", () => {
@@ -189,8 +176,6 @@ export async function initMap() {
   destBox.addListener("place_changed", () => {
     routeDisplay.setDest(destBox.getPlace());
   });
-
-  //map.controls[google.maps.ControlPosition.TOP_RIGHT].push(document.getElementById("searchbar"));
 
   map.addListener("bounds_changed", () => {
     originBox.bindTo("bounds", map);
@@ -266,7 +251,7 @@ export async function initMap() {
   searchBoxInitialization(destBox, markers, AdvancedMarkerElement, map);
 
   routeDisplay.init();
-  navButtomInitialization(map);
+  navButtonInitialization(map);
 }
 
 // Save favorite search to local storage
