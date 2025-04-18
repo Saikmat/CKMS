@@ -10,13 +10,13 @@
   </head>
   <body>
     <div id="header">
-      <img src="./assets/UMBC-primary-logo-CMYK-on-black.png" id="logo"></img>
+      <img src="./assets/UMBC-primary-logo-CMYK-on-black.png" id="logo" alt="UMBC Logo Image">
       <h1 id="titletxt">Interactive Map</h1>
     </div>
 
     <div id="navbar">
-      <a href="accessible.html" id="nav-txt">Accessible Routes</a>
-      <a href="weather.html" id="nav-txt">Weather Routes</a>
+      <a href="accessible.html" id="accessible-txt">Accessible Routes</a>
+      <a href="weather.html" id="weather-txt">Weather Routes</a>
     </div>
 
     <!-- Search Input for Autocomplete 
@@ -32,16 +32,16 @@
       <div id="sidebar">
         <div id="directions" style="padding-top: 15px; padding-bottom: 10px; font-weight: bold;">Search for a Destination</div>
         <div id="searchbar">
-          <input type="text" id="origin-input" name="origin-input" placeholder="Enter your starting location"></input>
-          <input type="text" id="dest-input" name="dest-input" placeholder="Enter your destination"></input>
+          <label for="origin-input"></label><input type="text" id="origin-input" name="origin-input" placeholder="Enter your starting location">
+          <label for="dest-input"></label><input type="text" id="dest-input" name="dest-input" placeholder="Enter your destination">
           <div id="buttons">
             <button id="search-button">View Routes</button>
             <button id="clear-button">Clear</button>
           </div>
         </div>
-        <div id="directions">
+        <div id="directions-region">
           <p style="font-weight: bold">Directions</p>
-          <p>These are a bunch of random words I'm using to fill in space. La la la.</p>
+          <p>Use caution when following walking directions</p>
         </div>
       </div>
 
