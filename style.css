@@ -46,11 +46,11 @@
 }
 
 #searchbar {
-  height: 15%;
+  height: 20%;
   background-color: white;
-  padding-top: 10px;
-  padding-left: 10px;
-  padding-bottom: 10px;
+  padding-top: 0.5vw;
+  padding-left: 0.5vw;
+  padding-bottom: 0.5vw;
   display: grid;
   font-family: "Inter", sans-serif;
   font-weight: bold;
@@ -73,8 +73,8 @@
 }
 
 #search-button, #clear-button {
-  margin-right: 15px;
-  border-radius: 10px;
+  margin-right: 0.75vw;
+  border-radius: 0.75vw;
   height: 2vw;
   width: 7vw;
   color: black;
@@ -92,7 +92,8 @@
 }
 
 #directions {
-  padding-left: 10px;
+  padding-left: 0.75vw;
+  font-size: 1vw;
   font-family: "Inter", sans-serif;
   font-weight: normal;
   font-style: normal;
@@ -129,14 +130,15 @@
   height: 1vw;
   text-align: left;
   text-indent: 1em;
-  border-radius: 25px;
+  border-radius: 2vw;
+  border-color: transparent;
   padding: 0.5vw;
   font-size: 1vw;
-  border: 2px solid black;
+  border: 0.15vw solid black;
 }
 
 #commons-marker-icon {
-  width: 30px;
+  width: 3vw;
   height: auto;
 }
 
@@ -167,7 +169,7 @@ embed {
 #feedback-button {
   position: fixed;
   top: 40%;
-  right: 20px;
+  right: 1.5vw;
   transform: rotate(270deg);
   transform-origin: right center;
   border: none;
