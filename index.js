@@ -54,6 +54,7 @@ const routeDisplay = new function () {
 
   this.hide = function () {
     this.directionsRenderer.setMap(null);
+    this.directionsRenderer.setPanel(null);
   }
 };
 
