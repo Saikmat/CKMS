@@ -58,6 +58,12 @@
   text-align: left;
 }
 
+@media screen and (orientation: portrait){
+  #searchbar{
+    height: 5%;
+  }
+}
+
 #buttons {
   width: 100%;
   background-color: white;
@@ -195,4 +201,17 @@ embed {
 html, body {
   height: 100%;
   margin: 0;
+}
+
+.gm-style-iw-chr {
+  width: 20%;
+  height: 60%;
+  top: 0;
+  right: 0;
+  position: absolute;
+  display: flex;
+}
+
+.gm-style-iw.gm-style-iw-c {
+  padding-top: 1vw !important;
 }
