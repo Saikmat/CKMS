@@ -73,8 +73,8 @@
 }
 
 #search-button, #clear-button {
-  margin-right: 15px;
-  border-radius: 10px;
+  margin-right: 0.75vw;
+  border-radius: 0.75vw;
   height: 2vw;
   width: 7vw;
   color: black;
@@ -108,7 +108,7 @@
   padding: 1vw;
 }
 
-#accessible-txt, #weather-txt {
+#index-txt, #accessible-txt, #weather-txt {
   text-align: center;
   color: black;
   padding: 1vw;
