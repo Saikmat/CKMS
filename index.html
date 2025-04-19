@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8">
     <title>UMBC Map</title>
     <script type="module" src="./index.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -10,50 +11,67 @@
   </head>
   <body>
     <div id="header">
-      <img src="./assets/UMBC-primary-logo-CMYK-on-black.png" id="logo"></img>
+      <img src="./assets/UMBC-primary-logo-CMYK-on-black.png" id="logo" alt="UMBC Logo Image">
       <h1 id="titletxt">Interactive Map</h1>
     </div>
 
     <div id="navbar">
-      <a href="accessible.html" id="nav-txt">Accessible Routes</a>
-      <a href="weather.html" id="nav-txt">Weather Routes</a>
+      <a href="accessible.html" id="accessible-txt">Accessible Routes</a>
+      <a href="weather.html" id="weather-txt">Weather Routes</a>
     </div>
 
-    <!-- Search Input for Autocomplete 
-    <label for="search-input">Search for a place:</label>
-    <input type="text" id="search-input" name="search-input">  
-
-    Button to Add to Favorites
-    <button id="favorite-button">Add to Favorites</button>
-
-    List to Display Favorite Searches
-    <ul id="favorites-list"></ul> -->
     <div id="mainpage">
       <div id="sidebar">
         <div id="directions" style="padding-top: 15px; padding-bottom: 10px; font-weight: bold;">Search for a Destination</div>
+
         <div id="searchbar">
-          <input type="text" id="pac-input" name="pac-input" placeholder="Enter your starting location"></input>
-          <input type="text" id="origin-input" name="origin-input" placeholder="Enter your destination"></input>
+          <!-- Origin input -->
+          <label for="origin-input"></label>
+          <input type="text" id="origin-input" name="origin-input" placeholder="Enter your starting location">
+
+          <!-- Destination input -->
+          <label for="dest-input"></label>
+          <input type="text" id="dest-input" name="dest-input" placeholder="Enter your destination">
+
+          <!-- 🔥 New Favorite Button for Destination -->
+          <button id="favorite-button" style="margin-top: 5px;">❤️ Save Destination as Favorite</button>
+
+          <!-- Search/Clear buttons -->
           <div id="buttons">
             <button id="search-button">View Routes</button>
-            <button id="search-button">Clear</button>
+            <button id="clear-button">Clear</button>
+          </div>
+
+          <!-- 🔥 New Favorite Destinations List -->
+          <div id="favorites-section" style="margin-top: 10px;">
+            <p style="font-weight: bold;">⭐ Favorite Destinations</p>
+            <ul id="favorites-list" style="list-style-type: none; padding-left: 0;"></ul>
           </div>
         </div>
-        <div id="directions">
+
+        <!-- Directions output -->
+        <div id="directions-region">
           <p style="font-weight: bold">Directions</p>
-          <p>These are a bunch of random words I'm using to fill in space. La la la.</p>
+          <p>Use caution when following walking directions</p>
         </div>
       </div>
 
+      <!-- Map container -->
       <div id="map"></div>
     </div>
 
+    <!-- Feedback button -->
     <button id="feedback-button" onclick="window.open('https\://forms.gle/EBJ5S11ruVYUaRyTA', '_blank')">Provide Feedback</button>
 
+    <!-- Footer -->
     <div id="footer">
-        <p>University of Maryland, Baltimore County &#x2022; 1000 Hilltop Circle, Baltimore, MD 21250<br>Copyright 2025 &copy; All Rights Reserved</p>
+      <p>
+        University of Maryland, Baltimore County &#x2022; 1000 Hilltop Circle, Baltimore, MD 21250<br>
+        Copyright 2025 &copy; All Rights Reserved
+      </p>
     </div>
 
-  <script src="https://unpkg.com/@googlemaps/js-api-loader@1.x/dist/index.min.js"></script>
-</body>
+    <!-- Google Maps loader -->
+    <script src="https://unpkg.com/@googlemaps/js-api-loader@1.x/dist/index.min.js"></script>
+  </body>
 </html>
