@@ -30,11 +30,38 @@
   height: 100%;
 }
 
+
+#navbar {
+  background-color: rgb(253, 181, 21);
+  height: 2vw;
+  padding: 1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#navbuttons {
+  display: flex;
+}
+
+#navbutton {
+  position: absolute;
+  left: 0.5%;
+  height: 3vw;
+  width: 3vw;
+  font-size: 2vw;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
 #map {
   height: 100%;
   width: 80%;
   float: right;
   margin: auto;
+  transition: width 1s;
 }
 
 #sidebar {
@@ -43,14 +70,23 @@
   float: left;
   background-color: white;
   overflow-y: auto;
+  transition: width 1s;
+}
+
+#sidebar.active {
+  width: 0%;
+}
+
+#map.active {
+  width: 100%;
 }
 
 #searchbar {
   height: 15%;
+  width: 90%;
   background-color: white;
-  padding-top: 10px;
-  padding-left: 10px;
-  padding-bottom: 10px;
+  padding-left: 1vw;
+  padding-bottom: 1vw;
   display: grid;
   font-family: "Inter", sans-serif;
   font-weight: bold;
@@ -92,20 +128,21 @@
 }
 
 #directions {
-  padding-left: 10px;
+  padding-left: 1vw;
+  padding-bottom: 1vw;
   font-family: "Inter", sans-serif;
   font-weight: normal;
   font-style: normal;
+  width: 90%;
 }
 
-#navbar {
-  /* rgb(99, 100, 102) */
-  background-color: rgb(253, 181, 21);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 2vw;
-  padding: 1vw;
+#directions-region {
+  padding-left: 1vw;
+  padding-bottom: 1vw;
+  font-family: "Inter", sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  width: 90%;
 }
 
 #index-txt, #accessible-txt, #weather-txt {
@@ -129,10 +166,10 @@
   height: 1vw;
   text-align: left;
   text-indent: 1em;
-  border-radius: 25px;
+  border-radius: 1vw;
   padding: 0.5vw;
   font-size: 1vw;
-  border: 2px solid black;
+  border: 0.15vw solid black;
 }
 
 #commons-marker-icon {

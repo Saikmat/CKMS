@@ -1,6 +1,16 @@
 import { Loader } from "@googlemaps/js-api-loader";
 import * as destinations from "./destinations.js";
 
+// Navbar slide function
+const sidebar = document.getElementById("sidebar");
+const navbutton = document.getElementById("navbutton");
+const mainMap = document.getElementById("map");
+
+navbutton.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+      mainMap.classList.toggle('active');
+});
+
 // Route display functionality
 const routeDisplay = new function () {
   this.directionsService;
@@ -73,18 +83,20 @@ function searchBoxInitialization(searchBox, markers, AdvancedMarkerElement, map)
     }
 
     let icon = "";
-    let content = "<div style='max-height: 10vw; max-width: 35vw; overflow: auto;'>"
+ 
+    let content = "<div style='max-height: 10vw; max-width: 35vw; overflow: auto;'>";
+ 
     let desc = destinations.buildings.find(b => b.name === place.name);
-    
-    //Add the building description if applicable
+    //If location is a building
     if(desc != undefined){
-      content += "<h1 style='font-family: \"Inter\", sans-serif; font-size: 1vw;'>" + place.name + "</h1>"
-      + "<p style='font-family: \"Inter\", sans-serif; font-size: 0.75vw;'>" + desc.description + "</p>";
+       content += "<h1 style='font-family: \"Inter\", sans-serif; font-size: 1vw;'>" + place.name + "</h1>"
+       + "<p style='font-family: \"Inter\", sans-serif; font-size: 0.75vw;'>" + desc.description + "</p>";
     }
+    //If location is POI
     else{
       desc = destinations.destinations.find(b => b.name === place.name);
-      
-      //Check if a matching POI exists
+       
+      //Check that the location exists
       if(desc != undefined){
         if(desc.category === "Food"){
           icon = "🍽️";
@@ -112,7 +124,7 @@ function searchBoxInitialization(searchBox, markers, AdvancedMarkerElement, map)
         + "<p style='font-family: \"Inter\", sans-serif; font-size: 0.75vw;'>" + desc.description + "</p>";
       }
     }
-
+ 
     content += "</div>";
 
     const marker = new AdvancedMarkerElement({
@@ -138,7 +150,14 @@ function navButtonInitialization(map){
   const hideButton = document.getElementById("clear-button");
   hideButton.addEventListener("click", () => {
     routeDisplay.hide();
-  })
+    document.getElementById("directions-region").innerHTML = "<p style='font-weight: bold'>Directions</p><p>Use caution when following walking directions</p>";
+    document.getElementById("origin-input").value = "";
+    document.getElementById("dest-input").value = "";
+    markers.forEach((marker) => {
+      marker.setMap(null);
+    });
+    markers = [];
+  });
 }
 
 function getMap(center) {
