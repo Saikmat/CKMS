@@ -7,8 +7,8 @@ const navbutton = document.getElementById("navbutton");
 const mainMap = document.getElementById("map");
 
 navbutton.addEventListener('click', () => {
-      sidebar.classList.toggle('active');
-      mainMap.classList.toggle('active');
+  sidebar.classList.toggle('active');
+  mainMap.classList.toggle('active');
 });
 
 // Route display functionality
@@ -64,6 +64,7 @@ const routeDisplay = new function () {
 
   this.hide = function () {
     this.directionsRenderer.setMap(null);
+    this.directionsRenderer.setPanel(null);
   }
 };
 
@@ -71,17 +72,16 @@ const routeDisplay = new function () {
 function searchBoxInitialization(searchBox, markers, AdvancedMarkerElement, map) {
   searchBox.addListener("place_changed", () => {
     const place = searchBox.getPlace();
-    console.log(place);
+    //console.log(place);
     markers.forEach((marker) => {
       marker.setMap(null);
     });
-    markers = [];
+    markers.length = 0;
 
     if (!place.geometry || !place.geometry.location) {
       return;
     }
 
-    //Add the description if it exists
     let icon = "";
  
     let content = "<div style='max-height: 10vw; max-width: 35vw; overflow: auto;'>";
@@ -141,7 +141,7 @@ function searchBoxInitialization(searchBox, markers, AdvancedMarkerElement, map)
   });
 }
 
-function navButtonInitialization(map){
+function navButtonInitialization(map, markersCollection){
   const showButton = document.getElementById("search-button");
   showButton.addEventListener("click", () => {
     routeDisplay.render(map);
@@ -150,13 +150,18 @@ function navButtonInitialization(map){
   const hideButton = document.getElementById("clear-button");
   hideButton.addEventListener("click", () => {
     routeDisplay.hide();
-    document.getElementById("directions-region").innerHTML = "<p style='font-weight: bold'>Directions</p><p>Use caution when following walking directions</p>";
     document.getElementById("origin-input").value = "";
     document.getElementById("dest-input").value = "";
+    clearMarkers(markersCollection);
+  });
+}
+
+function clearMarkers(markersCollection){
+  markersCollection.map((markers) => {
     markers.forEach((marker) => {
       marker.setMap(null);
     });
-    markers = [];
+    markers.length = 0;
   });
 }
 
@@ -184,7 +189,9 @@ export async function initMap() {
   const center = { lat: 39.254752, lng: -76.710837 }
 
   const map = getMap(center);
-  let markers = [];
+  let originMarkers = [];
+  let destMarkers = [];
+  let allMarks = [originMarkers, destMarkers];
 
   // Setup Place Search (autocomplete input for search)
   const originInput = document.getElementById("origin-input");
@@ -221,7 +228,6 @@ export async function initMap() {
     content: umbcRetrieverHead,
   });
 
-//Issue with marker placement was that favorites search and map search were both bound to the same search bar
 //Used to be favorites search
 /*
   // Initialize Autocomplete for favorite search feature
@@ -274,11 +280,11 @@ export async function initMap() {
     }
   });
 */
-  searchBoxInitialization(originBox, markers, AdvancedMarkerElement, map);
-  searchBoxInitialization(destBox, markers, AdvancedMarkerElement, map);
+  searchBoxInitialization(originBox, originMarkers, AdvancedMarkerElement, map);
+  searchBoxInitialization(destBox, destMarkers, AdvancedMarkerElement, map);
 
   routeDisplay.init();
-  navButtonInitialization(map);
+  navButtonInitialization(map, allMarks);
 }
 
 // Save favorite search to local storage
