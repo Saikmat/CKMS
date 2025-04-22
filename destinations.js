@@ -50,34 +50,39 @@ export const destinations = [
     description: "Campus Life at UMBC significantly shapes the student experience. From getting involved in campus events to joining student organizations, from exploring diverse cultures to learning about spiritual practices, from shaping new leaders to serving local communities, from fraternity and sorority bonds to Student Government board meetings – students create their Campus Life. Students are the reason for it, they make it happen, and they create it with their passions, ideas, dialogues, and programs. Through involvement in the countless student activities, students have the opportunities to meet new people, try new things, and engage in learning opportunities that complement their academic experiences."
   },
   {
-    name: "Yum Shoppe",
+    name: "The Yum Shoppe",
     location: "The Commons Level G, Suite 003",
     category: "Food",
-    onGoogle: "Y"
+    onGoogle: "Y",
+    description: "Your Yum Shoppe is located on the ground floor of the UMBC Bookstore. We are here for your affordable quick meal options and snacking needs! The Yum Shoppe offers a wide variety of food options including, but not limited to, fresh sandwiches, a large ethnic food section, healthy food options as well as a variety of vegan products. Your Yum Shoppe is also the only place on campus to find non-Coca-Cola beverage products. Also available are health and beauty aids, toiletries and other sundries. With competitive pricing this is truly the convenience store with more!"
   },
   {
-    name: "Women's Center",
+    name: "The Women's Center",
     location: "The Commons Level G, Suite 004",
     category: "Organization",
-    onGoogle: "Y"
+    onGoogle: "Y",
+    description: "The Women’s Center at UMBC advances gender equity from an intersectional feminist perspective through co-curricular programming, support services, and advocacy for marginalized individuals and communities. We prioritize critical social justice as our community value, with a deliberate focus on women, gender, anti-racism, and feminism. All are welcome as long as they respect women. Their experiences. Their stories. Their potential."
   },
   {
     name: "Campus Information Center",
     location: "The Commons Level 1",
     category: "Miscellaneous",
-    onGoogle: "Y"
+    onGoogle: "Y",
+    description: "The Campus Information Center (CIC) is located on the lobby level of The Commons.  We provide services to UMBC students, faculty, staff, and campus visitors including: general campus and event information, event ticket sales, campus lost & found, printing & copying, posting approval, and battery, paper, and printer ink recycling."
   },
   {
     name: "Flat Tuesday's",
     location: "The Commons Levels 1 and 2",
     category: "Food",
-    onGoogle: "N"
+    onGoogle: "N",
+    description: "Come visit True Grit at UMBC's very own pub, Flat Tuesdays. Located on the second floor of The Commons, Flat Tuesdays serves as a place of study and light conversation during the day while transforming into a UMBC hotspot after 4:00 p.m. Whether winning trivia, hosting a popular event, enjoying the company of friends, or entering the world of Mardi Gras, Flat Tuesdays is the place to be. With free popcorn, good drinks, and food, be sure to bring along your friends and colleagues to come have a good time."
   },
   {
     name: "Dean of Students and Student Support Services",
     location: "The Commons Room 1A02",
     category: "Academic",
-    onGoogle: "N"
+    onGoogle: "N",
+    description: "The Dean of Students (DOS) Office is dedicated to fostering the success and well-being of all Retrievers by providing comprehensive support throughout your academic journey. Whether you need help identifying the right resources, navigating the complexities of campus policies, or connecting with various university programs and departments, the DOS Office is here to guide you every step of the way. Our commitment is to ensure that every student has access to the tools and support they need to thrive within our university community."
   },
   {
     name: "Retriever Sports Zone",
@@ -89,7 +94,8 @@ export const destinations = [
     name: "Sushi Do",
     location: "The Commons Level 1",
     category: "Food",
-    onGoogle: "Y"
+    onGoogle: "Y",
+    description: "Sushi Do is an eatery located on the mezzaine of the Commons. It offers made to order Boba tea, a hot Chinese entree bar, hand-rolled sushi, and a rotating menu of Ramen and Udon noodles."
   },
   {
     name: "Student Organizations Space",
@@ -104,10 +110,11 @@ export const destinations = [
     onGoogle: "N"
   },
   {
-    name: "The Mosaic: Center for Cultural Diversity",
+    name: "The Mosaic: Center for Cultural Diversity with Initiatives for Identity, Inclusion & Belonging (i3b) at UMBC",
     location: "The Commons Level 2",
     category: "Organization",
-    onGoogle: "Y"
+    onGoogle: "Y",
+    description: "The Mosaic is a center for resources, community building, and staff support, and is a lounge space for UMBC community members of all backgrounds to use for relaxing, programming, small events, and small gatherings. We strive to develop innovative programs & initiatives that celebrate cultural diversity while advocating for inclusion, equity, & social justice."
   },
   {
     name: "Student Government Association",
@@ -149,7 +156,7 @@ export const destinations = [
     name: "Student Affairs",
     location: "The Commons Room 335",
     category: "Academic",
-    onGoogle: "N...unless this is off-campus student services"
+    onGoogle: "N"
   },
   {
     name: "Office of the Vice President For Student Affairs",
@@ -185,13 +192,15 @@ export const destinations = [
     name: "Retriever Essentials",
     location: "The Commons Level 1",
     category: "Food",
-    onGoogle: "Y"
+    onGoogle: "Y",
+    description: "Retriever Essentials is a faculty, staff, and student partnership to tackle food insecurity in our university community. Its mission is to develop a comprehensive program of resources which eliminates the immediate burden of food insecurity for UMBC members and connects them to ongoing support networks, in order to enhance their academic retention and career success."
   },
   {
-    name: "Halal Shack",
+    name: "The Halal Shack",
     location: "The Commons Level 1",
     category: "Food",
-    onGoogle: "Y"
+    onGoogle: "Y",
+    description: "Halal Shack is an eatery located on Level 1 of the Commons. It offers a buffet-style selection of Halal dishes."
   },
   {
     name: "Mato",
@@ -203,19 +212,22 @@ export const destinations = [
     name: "Wild Greens",
     location: "The Commons Level 1",
     category: "Food",
-    onGoogle: "Y"
+    onGoogle: "Y",
+    description: "Wild Greens is an eatery located on Level 1 of the Commons. It offers a selection of vegetarian and vegan dishes."
   },
   {
-    name: "Dunkin Donuts",
+    name: "Dunkin'",
     location: "The Commons Level 1",
     category: "Food",
-    onGoogle: "Y"
+    onGoogle: "Y",
+    description: "Located on the Ground Floor of the Commons, Dunkin' Donuts offers a selection of sweet and savory food options, as well as coffee and other refreshments."
   },
   {
-    name: "Copperhead Jacks",
+    name: "Copperhead Jack’s",
     location: "The Commons Level 1",
     category: "Food",
-    onGoogle: "Y"
+    onGoogle: "Y",
+    description: "Copperhead Jack’s is an eatery located on Level 1 of the Commons. It offers a selection of Mexican cuisine, including tacos, burittos, quesadillas, and bowls."
   },
   {
     name: "Commons Retriever Market",
@@ -233,25 +245,29 @@ export const destinations = [
     name: "Indian Kitchen",
     location: "The Commons Level 1",
     category: "Food",
-    onGoogle: "Y"
+    onGoogle: "Y",
+    description: "Indian Kitchen is an eatery located on Level 1 of the Commons featuring Indian cuisine, including a variety if vegan and vegetarian options."
   },
   {
     name: "Chick-fil-A",
     location: "University Center",
     category: "Food",
-    onGoogle: "Y"
+    onGoogle: "Y",
+    description: "Located on the first floor of University Center, Chik-fil-A is an eatery offering a variety of chicken-based meals along with refreshments and desserts."
   },
   {
     name: "Starbucks",
     location: "University Center",
     category: "Food",
-    onGoogle: "Y"
+    onGoogle: "Y",
+    description: "Located on the first floor of University Center, Starbucks offers coffee, tea, and other refreshments."
   },
   {
-    name: "Einstein Brother'sBagels",
+    name: "Einstein Brother's Bagels",
     location: "Albin O. Kuhn Library & Gallery Floor 1",
     category: "Food",
-    onGoogle: "Y"
+    onGoogle: "Y",
+    description: "In the AOK Library, Einstein Brother's Bagels offers coffee, bagels and breakfast sandwiches all day long, and is open 7 days a week during the semester."
   },
   {
     name: "True Grit's Retriever Market",
@@ -263,13 +279,15 @@ export const destinations = [
     name: "Retriever Integrated Health",
     location: "The Center for Well-Being",
     category: "Health",
-    onGoogle: "Y"
+    onGoogle: "Y",
+    description: "Retriever Integrated Health (RIH) brings together the former University Health Services, and the Counseling Center offices to work in a collaborative, holistic approach to support your well-being and success. Our team is committed to providing the UMBC community with high-quality services, support, and resources. RIH is an interdisciplinary team that includes our administrative staff members and a variety of healthcare professionals, representing disciplines of acupuncture, dietetics, health education, massage, nursing, medicine, psychiatry, psychology, counseling, and social work."
   },
   {
     name: "Police Department",
     location: "UMBC Police Department\r\nCentral Plant",
     category: "Student support",
-    onGoogle: "Y"
+    onGoogle: "Y",
+    description: "The mission of the UMBC Police Department is to provide a safe and secure environment that enhances the quality of life for the university community. We are committed to the prevention of crime; protection of life and property; preservation of peace, order and safety; enforcement of laws; and university policies and the safeguarding of individual rights guaranteed by the U.S. Constitution."
   },
   {
     name: "Faculty Development Center",
@@ -323,7 +341,8 @@ export const destinations = [
     name: "Parking Services",
     location: "900 Walker Suite 107",
     category: "Miscellaneous",
-    onGoogle: "Y...I think"
+    onGoogle: "Y",
+    description: "UMBC Parking Services is committed to providing equitable parking infrastructure for all students, faculty, staff, and visitors through the use of innovative, sustainable, and customer-driven measures that support the university’s mission."
   },
   {
     name: "Procurement and Strategic Sourcing",
@@ -332,16 +351,18 @@ export const destinations = [
     onGoogle: "N"
   },
   {
-    name: "Registrar's Office",
+    name: "UMBC: Registrars Office",
     location: "Sherman Room\r\n221",
     category: "Academic",
-    onGoogle: "Y"
+    onGoogle: "Y",
+    description: "The mission of the Registrar's Office is to provide the UMBC community with high-quality services related to academic programs, enrollment, records, and graduation. We are committed to ensuring the integrity of academic records and we value diversity and creativity while maintaining due diligence in professionalism, respect, and efficiency in our work. "
   },
   {
     name: "Residential Life",
     location: "Erickson Hall",
     category: "Housing",
-    onGoogle: "Y"
+    onGoogle: "Y",
+    description: "Residential Life (RL) is responsible for operating and maintaining the residential facilities as well as coordinating programs and services for approximately 4,000 students who live on campus. UMBC’s Residential Life program not only provides living environments which are clean, secure, and convenient to classes, but it also provides you with growth and development opportunities."
   },
   {
     name: "The Shriver Center",
@@ -353,13 +374,14 @@ export const destinations = [
     name: "Transit",
     location: "Warehouse 113",
     category: "Miscellaneous",
-    onGoogle: "Y...I think"
+    onGoogle: "Y"
   },
   {
     name: "Student Conduct and Community Standards",
     location: "The Center for Well-Being\r\nSuite 119",
     category: "Student support",
-    onGoogle: "Y"
+    onGoogle: "Y",
+    description: "Student Conduct and Community Standards supports the University’s dedication to student success and its educational purposes and goals by publishing, enforcing, drafting and interpreting standards of student behavior and related policies and procedures; facilitates student and community development and ethical growth opportunities promoting personal integrity, civility, self-responsibility, citizenship and appreciation for diversity; works to maintain a safe and productive environment supporting the University’s educational purpose and the students’ educational goals; and promotes the privileges and responsibilities associated with a student’s affiliation with the University."
   },
   {
     name: "Student Business Services",
@@ -377,12 +399,12 @@ export const destinations = [
 
 export const buildings = [
   {
-    name: "Albin O. Kuhn Library & Gallery",
+    name: "Albin O. Kuhn Library and Gallery",
     coordinates: {
       lat: 39.2563038,
       lng: -76.7115496
     },
-    description: "The Albin O. Kuhn Library & Gallery, UMBC's main library, is a central resource for the University of Maryland, Baltimore County, offering a vast collection of books, journals, digital resources, and more, along with study spaces, learning centers, and various services to support research and learning."
+    description: "The Albin O. Kuhn Library & Gallery, UMBC's main library, is a central resource for the University of Maryland, Baltimore County, offering a vast collection of books, journals, digital resources, and more, along with study spaces, learning centers, and various services to support research and learning. <br><br>Notable locations include:<br>\u2022 The Academic Success Center<br>\u2022 Einstein Brother's Bagels"
   },
   {
     name: "Public Policy Building",
@@ -390,7 +412,7 @@ export const buildings = [
       lat: 39.2552847,
       lng: -76.7092553
     },
-    description: "The UMBC Public Policy Building, home to the School of Public Policy, houses academic departments like Economics, Political Science, Public Health, Public Policy, and Sociology/Anthropology, as well as the Shriver Center, a hub for applied learning and community engagement."
+    description: "The UMBC Public Policy Building, home to the School of Public Policy, houses academic departments like Economics, Political Science, Public Health, Public Policy, and Sociology/Anthropology, as well as the Shriver Center, a hub for applied learning and community engagement. <br><br>Notable locations include:<br>\u2022 The Shriver Center"
   },
   {
     name: "Physics Building",
@@ -406,7 +428,7 @@ export const buildings = [
       lat: -37.8041282,
       lng: 144.9882914
     },
-    description: "The UMBC Commons is the central student activities center, a 143,000 sq ft high-tech facility, serving as a hub for campus life with dining, entertainment, meeting spaces, and student services, fostering community among students, faculty, and staff."
+    description: "The UMBC Commons is the central student activities center, a 143,000 sq ft high-tech facility, serving as a hub for campus life with dining, entertainment, meeting spaces, and student services, fostering community among students, faculty, and staff. <br><br>Notable locations include:<br>\u2022 Absurd Bird & Burgers<br>\u2022 Campus Information Center<br>\u2022 Campus Life<br>\u2022 Center for Democracy and Civic Life<br>\u2022 Commons Retriever Market<br>\u2022 CommonVision and UMBC Design and Print Center<br>\u2022 Copperhead Jack's<br>\u2022 Dean of Students and Student Support Services<br>\u2022 Dunkin' Donuts<br>\u2022 Event and Conference Services<br>\u2022 Fireside Lounge<br>\u2022 Flat Tuesday's<br>\u2022 Fraternities and Sororities<br>\u2022 Gameroom<br>\u2022 Graduate Student Life<br>\u2022 Halal Shack<br>\u2022 Indian Kitchen<br>\u2022 Mato<br>\u2022 Office of the Vice President For Student Affairs<br>\u2022 Retriever Essentials<br>\u2022 Retriever Sports Zone<br>\u2022 Student Affairs<br>\u2022 Student Events Board<br>\u2022 Student Government Association<br>\u2022 Student Involvement Center<br>\u2022 Student Organizations Space"
   },
   {
     name: "Interdisciplinary Life Sciences Building",
@@ -438,15 +460,15 @@ export const buildings = [
       lat: 39.2549256,
       lng: -76.7130437
     },
-    description: "The Robert and Jane Meyerhoff Chemistry Building at UMBC is a reddish-brown brick building adjacent to the University Center, housing chemistry and biochemistry departments, labs, and the Howard Hughes Medical Institute (HHMI) research facility, as well as the Meyerhoff Lecture Hall."
+    description: "The Robert and Jane Meyerhoff Chemistry Building at UMBC is a reddish-brown brick building adjacent to the University Center, housing chemistry and biochemistry departments, labs, and the Howard Hughes Medical Institute (HHMI) research facility, as well as the Meyerhoff Lecture Hall. <br><br>Notable locations include:<br>\u2022 Glass Shop"
   },
   {
-    name: "Fine Arts Building",
+    name: "UMBC Fine Arts Building",
     coordinates: {
       lat: 41.8763659,
       lng: -87.6245409
     },
-    description: "The Fine Arts Building at UMBC houses the Department of Visual Arts, including studios, labs, and exhibition spaces, and is home to the Visual Arts Production Center and the Center for Art, Design and Visual Culture."
+    description: "The Fine Arts Building at UMBC houses the Department of Visual Arts, including studios, labs, and exhibition spaces. <br><br>Notable locations include:<br>\u2022 Computing Success Center<br>\u2022 Center for Art, Design and Visual Culture<br>\u2022 Visual Arts Production Center"
   },
   {
     name: "Math & Psychology Building",
@@ -454,7 +476,7 @@ export const buildings = [
       lat: 39.2541348,
       lng: -76.7124123
     },
-    description: "The Math and Psychology Building at UMBC houses general classrooms on the first floor and the Career Center on the second floor, offering resources for students to explore career options, gain experience, and connect with employers."
+    description: "The Math and Psychology Building at UMBC houses general classrooms on the first floor and the Career Center on the second floor, offering resources for students to explore career options, gain experience, and connect with employers. <br><br>Notable locations include:<br>\u2022 The Career Center"
   },
   {
     name: "University Center",
@@ -462,7 +484,7 @@ export const buildings = [
       lat: NaN,
       lng: NaN
     },
-    description: "The University Center (UC) at UMBC, located between Meyerhoff Hall and Sherman Hall, provides the campus community with a variety of amenities like the Campus Card Services, WMBC student-run radio station, and Chick-fil-A and Starbucks."
+    description: "The University Center (UC) at UMBC, located between Meyerhoff Hall and Sherman Hall, provides the campus community with a variety of amenities like the Campus Card Services, WMBC student-run radio station, and Chick-fil-A and Starbucks. <br><br>Notable locations include:<br>\u2022 Chik-fil-A<br>\u2022 Starbucks<br>\u2022 Retriever Card Center & Mail Services"
   },
   {
     name: "Engineering Building",
@@ -470,7 +492,7 @@ export const buildings = [
       lat: 42.7249358,
       lng: -84.4813352
     },
-    description: "The UMBC Engineering Building, which houses the Department of Chemical, Biochemical & Environmental Engineering and the Department of Mechanical Engineering, is distinct from the Information Technology & Engineering (ITE) Building, which houses the COEIT Dean's Offices, Engineering and Computing Education Program, and other related departments."
+    description: "The UMBC Engineering Building, which houses the Department of Chemical, Biochemical & Environmental Engineering and the Department of Mechanical Engineering, is distinct from the Information Technology & Engineering (ITE) Building, which houses the COEIT Dean's Offices, Engineering and Computing Education Program, and other related departments. <br><br>Notable locations include:<br>\u2022 Faculty Development Center"
   },
   {
     name: "Sondheim Hall",
@@ -486,7 +508,7 @@ export const buildings = [
       lat: 40.1070935,
       lng: -88.2323492
     },
-    description: "Sherman Hall at UMBC, a brick building built in 1980, houses classrooms, a lecture hall, and academic offices for various departments, including Modern Languages and Education, and is undergoing a renovation project to meet the university's needs for the next 30 years."
+    description: "Sherman Hall at UMBC, a brick building built in 1980, houses classrooms, a lecture hall, and academic offices for various departments, including Modern Languages and Education, and is undergoing a renovation project to meet the university's needs for the next 30 years. <br><br>Notable locations include:<br>\u2022 Meyerhoff Scholars Program<br>\u2022 Office for Academic and Pre-Professional Advising<br>\u2022 Registrar's Office"
   },
   {
     name: "Information Technology / Engineering Building",
@@ -510,7 +532,7 @@ export const buildings = [
       lat: NaN,
       lng: NaN
     },
-    description: "The UMBC Administration Building,  is the tallest building on campus at ten stories, housing offices for UMBC's president, the Graduate School, International Education Services, and Student Business Services, among other administrative functions."
+    description: "The UMBC Administration Building is the tallest building on campus at ten stories, housing offices for UMBC's president, the Graduate School, International Education Services, and Student Business Services, among other administrative functions. <br><br>Notable locations include:<br>\u2022 Administration and Finance<br>\u2022 Financial Services<br>\u2022 Human Resources & Strategic Talent Management<br>\u2022 Institutional Research, Analysis & Decision Support<br>\u2022 Office of Budget and Resource Analysis<br>\u2022 Office of Equity and Civil Rights<br>\u2022 Procurement and Strategic Sourcing<br>\u2022 Student Business Services"
   },
   {
     name: "Performing Arts and Humantities Building",
@@ -566,7 +588,7 @@ export const buildings = [
       lat: 39.4694144,
       lng: -87.4103077
     },
-    description: "Erickson Hall at UMBC is a residence hall that offers suite-style housing, providing students with semi-private communal spaces and access to community kitchens, lounges, and laundry rooms. It is also home to the Shriver Living Learning Center."
+    description: "Erickson Hall at UMBC is a residence hall that offers suite-style housing, providing students with semi-private communal spaces and access to community kitchens, lounges, and laundry rooms. It is also home to the Shriver Living Learning Center. <br><br>Notable locations include:<br>\u2022 Residential Life"
   },
   {
     name: "Hillside Apartments",
@@ -614,7 +636,7 @@ export const buildings = [
       lat: 44.9640859,
       lng: -89.6229392
     },
-    description: "The UMBC Center for Well-Being is a facility that houses the Counseling Center, University Health Services, and offices of Student Conduct and Community Standards, aiming to provide a centralized, integrative approach to mental and physical well-being, and convenient access to health and wellness services for students."
+    description: "The UMBC Center for Well-Being is a facility that houses the Counseling Center, University Health Services, and offices of Student Conduct and Community Standards, aiming to provide a centralized, integrative approach to mental and physical well-being, and convenient access to health and wellness services for students. <br><br>Notable locations include:<br>\u2022 Retriever Integrated Health<br>\u2022 Student Conduct and Community Standards"
   },
   {
     name: "True Grit's",
@@ -678,7 +700,7 @@ export const buildings = [
       lat: NaN,
       lng: NaN
     },
-    description: "900 Walker Avenue, located near the Walker Apartments and across from the Baltimore County Police Building, is the home of the UMBC Parking Services and the Department of Emergency and Disaster Health Systems, and also houses research centers and units for the College of Engineering and Information Technology."
+    description: "900 Walker Avenue, located near the Walker Apartments and across from the Baltimore County Police Building, is the home of the UMBC Parking Services and the Department of Emergency and Disaster Health Systems, and also houses research centers and units for the College of Engineering and Information Technology. <br><br>Notable locations include:<br>\u2022 Parking Services"
   },
   {
     name: "Army ROTC",

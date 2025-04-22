@@ -30,11 +30,37 @@
   height: 100%;
 }
 
+#navbar {
+  background-color: rgb(253, 181, 21);
+  height: 2vw;
+  padding: 1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#navbuttons {
+  display: flex;
+}
+
+#navbutton {
+  position: absolute;
+  left: 0.5%;
+  height: 3vw;
+  width: 3vw;
+  font-size: 2vw;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
 #map {
   height: 100%;
   width: 80%;
   float: right;
   margin: auto;
+  transition: width 1s;
 }
 
 #sidebar {
@@ -43,19 +69,34 @@
   float: left;
   background-color: white;
   overflow-y: auto;
+  transition: width 1s;
+}
+
+#sidebar.active {
+  width: 0%;
+}
+
+#map.active {
+  width: 100%;
 }
 
 #searchbar {
   height: auto;
+  width: 90%;
   background-color: white;
-  padding-top: 10px;
-  padding-left: 10px;
-  padding-bottom: 10px;
+  padding-left: 1vw;
+  padding-bottom: 1vw;
   display: grid;
   font-family: "Inter", sans-serif;
   font-weight: bold;
   font-style: normal;
   text-align: left;
+}
+
+@media screen and (orientation: portrait) {
+  #searchbar {
+    height: 5%;
+  }
 }
 
 #buttons {
@@ -67,9 +108,9 @@
   margin-top: 5px;
 }
 
-#search-button {
-  margin-right: 15px;
-  border-radius: 10px;
+#search-button, #clear-button {
+  margin-right: 0.75vw;
+  border-radius: 0.75vw;
   height: 2vw;
   width: 7vw;
   color: black;
@@ -152,22 +193,24 @@
 }
 
 #directions {
-  padding-left: 10px;
+  padding-left: 1vw;
+  padding-bottom: 1vw;
   font-family: "Inter", sans-serif;
   font-weight: normal;
   font-style: normal;
+  width: 90%;
 }
 
-#navbar {
-  background-color: rgb(253, 181, 21);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 2vw;
-  padding: 1vw;
+#directions-region {
+  padding-left: 1vw;
+  padding-bottom: 1vw;
+  font-family: "Inter", sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  width: 90%;
 }
 
-#nav-txt {
+#index-txt, #accessible-txt, #weather-txt {
   text-align: center;
   color: black;
   padding: 1vw;
@@ -221,7 +264,7 @@ embed {
   font-size: 1vw;
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
-  font-weight: light;
+  font-weight: lighter;
   font-style: normal;
   text-decoration: none;
 }
@@ -234,7 +277,6 @@ embed {
   transform-origin: right center;
   border: none;
   cursor: pointer;
-  border: top;
   border-radius: 0.5vw 0.5vw 0 0;
   font-size: 1vw;
   font-family: "Inter", sans-serif;
@@ -264,4 +306,17 @@ embed {
 html, body {
   height: 100%;
   margin: 0;
+}
+
+.gm-style-iw-chr {
+  width: 20%;
+  height: 60%;
+  top: 0;
+  right: 0;
+  position: absolute;
+  display: flex;
+}
+
+.gm-style-iw.gm-style-iw-c {
+  padding-top: 1vw !important;
 }
