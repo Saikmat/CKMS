@@ -1,21 +1,31 @@
 import { Loader } from "@googlemaps/js-api-loader";
 import * as destinations from "./destinations.js";
 
+// Navbar slide function
+const sidebar = document.getElementById("sidebar");
+const navbutton = document.getElementById("navbutton");
+const mainMap = document.getElementById("map");
+
+navbutton.addEventListener('click', () => {
+  sidebar.classList.toggle('active');
+  mainMap.classList.toggle('active');
+});
+
 // Route display functionality
-var routeDisplay = new function() {
+const routeDisplay = new function () {
   this.directionsService;
   this.directionsRenderer;
   this.origin;
   this.dest;
 
-  this.init = function() {
+  this.init = function () {
     this.directionsService = new google.maps.DirectionsService();
-    this.directionsRenderer = new google.maps.DirectionsRenderer({ preserveViewport: true });
-    //can switch preserveViewport to false if we want to zoom into a route 
+    this.directionsRenderer = new google.maps.DirectionsRenderer({preserveViewport: true});
+    //can switch preserveViewport to false if we want to zoom into a route
   };
 
-  this.setOrigin = function(origin) {
-    if(!origin.geometry || !origin.place_id) return;
+  this.setOrigin = function (origin) {
+    if (!origin.geometry || !origin.place_id) return;
 
     this.origin = {
       lat: origin.geometry.location.lat(),
@@ -23,72 +33,69 @@ var routeDisplay = new function() {
     };
   };
 
-  this.setDest = function(dest) {
-    if(!dest.geometry || !dest.place_id) return;
-    
+  this.setDest = function (dest) {
+    if (!dest.geometry || !dest.place_id) return;
+
     this.dest = {
       lat: dest.geometry.location.lat(),
       lng: dest.geometry.location.lng()
     };
   };
 
-  this.render = function(map) {
+  this.render = function (map) {
     this.directionsRenderer.setMap(map);
-    let self = this; //idk why this is important, it just works
+    let self = this; // Suppresses invalid use of this warnings
 
-    if(this.origin !== undefined && this.dest !== undefined){
+    if (this.origin !== undefined && this.dest !== undefined) {
       this.directionsService.route({
         origin: this.origin,
         destination: this.dest,
         travelMode: google.maps.TravelMode.WALKING //Should the mode the adjustable?
-      }, function(response, status) {
+      }, function (response, status) {
         if (status === "OK") {
           self.directionsRenderer.setDirections(response);
-          parseRoute(response.routes[0].legs[0].steps);
+          self.directionsRenderer.setPanel(document.getElementById("directions-region"));
         } else {
           console.log('Directions request failed due to ' + status);
         }
-      });
+      }).then();
     }
   };
 
-  this.hide = function() {
+  this.hide = function () {
     this.directionsRenderer.setMap(null);
+    this.directionsRenderer.setPanel(null);
   }
 };
 
-function parseRoute(){
-  return "";
-}
 
 function searchBoxInitialization(searchBox, markers, AdvancedMarkerElement, map) {
   searchBox.addListener("place_changed", () => {
     const place = searchBox.getPlace();
-    console.log(place);
+    //console.log(place);
     markers.forEach((marker) => {
       marker.setMap(null);
     });
-    markers = [];
+    markers.length = 0;
 
     if (!place.geometry || !place.geometry.location) {
       return;
     }
 
-    //Add the description if it exists
     let icon = "";
-
+ 
     let content = "<div style='max-height: 10vw; max-width: 35vw; overflow: auto;'>";
-
+ 
     let desc = destinations.buildings.find(b => b.name === place.name);
     //If location is a building
     if(desc != undefined){
-      content += "<h1 style='font-family: \"Inter\", sans-serif; font-size: 1vw;'>" + place.name + "</h1>"
-      + "<p style='font-family: \"Inter\", sans-serif; font-size: 0.75vw;'>" + desc.description + "</p>";
+       content += "<h1 style='font-family: \"Inter\", sans-serif; font-size: 1vw;'>" + place.name + "</h1>"
+       + "<p style='font-family: \"Inter\", sans-serif; font-size: 0.75vw;'>" + desc.description + "</p>";
     }
     //If location is POI
     else{
       desc = destinations.destinations.find(b => b.name === place.name);
-      
+       
       //Check that the location exists
       if(desc != undefined){
         if(desc.category === "Food"){
@@ -117,7 +124,7 @@ function searchBoxInitialization(searchBox, markers, AdvancedMarkerElement, map)
         + "<p style='font-family: \"Inter\", sans-serif; font-size: 0.75vw;'>" + desc.description + "</p>";
       }
     }
-
+ 
     content += "</div>";
 
     const marker = new AdvancedMarkerElement({
@@ -134,7 +141,7 @@ function searchBoxInitialization(searchBox, markers, AdvancedMarkerElement, map)
   });
 }
 
-function navButtomInitialization(map){
+function navButtonInitialization(map, markersCollection){
   const showButton = document.getElementById("search-button");
   showButton.addEventListener("click", () => {
     routeDisplay.render(map);
@@ -143,7 +150,19 @@ function navButtomInitialization(map){
   const hideButton = document.getElementById("clear-button");
   hideButton.addEventListener("click", () => {
     routeDisplay.hide();
-  })
+    document.getElementById("origin-input").value = "";
+    document.getElementById("dest-input").value = "";
+    clearMarkers(markersCollection);
+  });
+}
+
+function clearMarkers(markersCollection){
+  markersCollection.map((markers) => {
+    markers.forEach((marker) => {
+      marker.setMap(null);
+    });
+    markers.length = 0;
+  });
 }
 
 function getMap(center) {
@@ -170,12 +189,14 @@ export async function initMap() {
   const center = { lat: 39.254752, lng: -76.710837 }
 
   const map = getMap(center);
-  let markers = [];
+  let originMarkers = [];
+  let destMarkers = [];
+  let allMarks = [originMarkers, destMarkers];
 
   // Setup Place Search (autocomplete input for search)
   const originInput = document.getElementById("origin-input");
   const originBox = new google.maps.places.Autocomplete(originInput, {
-    fields: ["place_id", "geometry", "formatted_address", "name"], 
+    fields: ["place_id", "geometry", "formatted_address", "name"],
     strictBounds: true,
   });
   originBox.addListener("place_changed", () => {
@@ -189,8 +210,6 @@ export async function initMap() {
   destBox.addListener("place_changed", () => {
     routeDisplay.setDest(destBox.getPlace());
   });
-
-  //map.controls[google.maps.ControlPosition.TOP_RIGHT].push(document.getElementById("searchbar"));
 
   map.addListener("bounds_changed", () => {
     originBox.bindTo("bounds", map);
@@ -209,7 +228,6 @@ export async function initMap() {
     content: umbcRetrieverHead,
   });
 
-//Issue with marker placement was that favorites search and map search were both bound to the same search bar
 //Used to be favorites search
 /*
   // Initialize Autocomplete for favorite search feature
@@ -262,11 +280,11 @@ export async function initMap() {
     }
   });
 */
-  searchBoxInitialization(originBox, markers, AdvancedMarkerElement, map);
-  searchBoxInitialization(destBox, markers, AdvancedMarkerElement, map);
+  searchBoxInitialization(originBox, originMarkers, AdvancedMarkerElement, map);
+  searchBoxInitialization(destBox, destMarkers, AdvancedMarkerElement, map);
 
   routeDisplay.init();
-  navButtomInitialization(map);
+  navButtonInitialization(map, allMarks);
 }
 
 // Save favorite search to local storage
