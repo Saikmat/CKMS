@@ -108,6 +108,48 @@
   justify-content: left;
 }
 
+#favorite-button {
+  margin-top: 1vw;
+  padding: 0.5vw 1vw;
+  border: none;
+  border-radius: 0.75vw;
+  background-color: rgb(255, 99, 132); /* A nice red-pink tone */
+  color: white;
+  font-size: 0.9vw;
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  width: 90%;
+}
+
+#favorite-button:hover {
+  background-color: rgb(200, 70, 100);
+}
+
+#favorites-container {
+  margin-top: 1vw;
+  padding-left: 1vw;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9vw;
+}
+
+#favorites-list {
+  list-style-type: "⭐ ";
+  padding-left: 1.5vw;
+  margin: 0.5vw 0;
+}
+
+#favorites-list li {
+  margin-bottom: 0.5vw;
+  cursor: pointer;
+  color: rgb(50, 50, 50);
+}
+
+#favorites-list li:hover {
+  color: rgb(253, 181, 21);
+  text-decoration: underline;
+}
+
 #search-button, #clear-button {
   margin-right: 0.75vw;
   border-radius: 0.75vw;
