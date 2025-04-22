@@ -30,6 +30,7 @@
   height: 100%;
 }
 
+
 #navbar {
   background-color: rgb(253, 181, 21);
   height: 2vw;
@@ -81,7 +82,7 @@
 }
 
 #searchbar {
-  height: auto;
+  height: 15%;
   width: 90%;
   background-color: white;
   padding-left: 1vw;
@@ -93,8 +94,8 @@
   text-align: left;
 }
 
-@media screen and (orientation: portrait) {
-  #searchbar {
+@media screen and (orientation: portrait){
+  #searchbar{
     height: 5%;
   }
 }
@@ -105,7 +106,48 @@
   display: grid;
   grid-template-columns: auto auto;
   justify-content: left;
-  margin-top: 5px;
+}
+
+#favorite-button {
+  margin-top: 1vw;
+  padding: 0.5vw 1vw;
+  border: none;
+  border-radius: 0.75vw;
+  background-color: rgb(255, 99, 132); /* A nice red-pink tone */
+  color: white;
+  font-size: 0.9vw;
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  width: 90%;
+}
+
+#favorite-button:hover {
+  background-color: rgb(200, 70, 100);
+}
+
+#favorites-container {
+  margin-top: 1vw;
+  padding-left: 1vw;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9vw;
+}
+
+#favorites-list {
+  list-style-type: "⭐ ";
+  padding-left: 1.5vw;
+  margin: 0.5vw 0;
+}
+
+#favorites-list li {
+  margin-bottom: 0.5vw;
+  cursor: pointer;
+  color: rgb(50, 50, 50);
+}
+
+#favorites-list li:hover {
+  color: rgb(253, 181, 21);
+  text-decoration: underline;
 }
 
 #search-button, #clear-button {
@@ -125,71 +167,6 @@
 
 #search-button:hover {
   background-color: rgb(166, 122, 5);
-}
-
-#clear-button {
-  border-radius: 10px;
-  height: 2vw;
-  width: 7vw;
-  color: black;
-  font-size: 0.75vw;
-  font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: bold;
-  font-style: normal;
-  background-color: lightgray;
-  cursor: pointer;
-}
-
-#clear-button:hover {
-  background-color: gray;
-  color: white;
-}
-
-#favorite-button {
-  margin-top: 8px;
-  width: 90%;
-  height: 2vw;
-  border-radius: 10px;
-  border: none;
-  font-size: 0.75vw;
-  background-color: #ffda7c;
-  color: black;
-  font-family: "Inter", sans-serif;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-#favorite-button:hover {
-  background-color: #e6b800;
-  color: white;
-}
-
-#favorites-section {
-  margin-top: 10px;
-  font-family: "Inter", sans-serif;
-  font-weight: normal;
-  font-size: 0.9vw;
-  max-height: 15vw;
-  overflow-y: auto;
-}
-
-#favorites-list {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-#favorites-list li {
-  padding: 6px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  font-size: 0.85vw;
-  font-weight: 500;
-}
-
-#favorites-list li:hover {
-  background-color: #f1f1f1;
 }
 
 #directions {
@@ -226,18 +203,15 @@
   color: white;
 }
 
-#pac-input,
-#origin-input,
-#dest-input {
+#origin-input, #dest-input {
   width: 90%;
   height: 1vw;
   text-align: left;
   text-indent: 1em;
-  border-radius: 25px;
-  border-color: transparent;
+  border-radius: 1vw;
   padding: 0.5vw;
   font-size: 1vw;
-  border: 2px solid black;
+  border: 0.15vw solid black;
 }
 
 #commons-marker-icon {
