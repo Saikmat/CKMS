@@ -225,6 +225,21 @@ function displayFavoriteSearches() {
     const listItem = document.createElement("li");
     listItem.textContent = place.name;
 
+    listItem.addEventListener('click', () => {
+      const placeStub = {
+        name: place.name,
+        place_id: place.place_id,
+        geometry: {
+          location: {
+            lat: () => place.geometry.location.lat,
+            lng: () => place.geometry.location.lng
+          }
+        }
+      };
+      routeDisplay.setDest(placeStub);
+      document.getElementById("dest-input").value = place.name;
+    });
+
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "-";
     deleteButton.className = "delete-fave";
