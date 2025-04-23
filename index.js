@@ -11,6 +11,19 @@ navbutton.addEventListener('click', () => {
   mainMap.classList.toggle('active');
 });
 
+// Hide/display favorites list on button click
+const faveButton = document.getElementById("view-fave-button");
+
+faveButton.addEventListener('click', () => {
+    const faveDiv = document.getElementById("favorites-container");
+    if(faveDiv.style.display === "none"){
+      faveDiv.style.display = "block";
+    }
+    else{
+      faveDiv.style.display = "none";
+    }
+});
+
 // Route display functionality
 const routeDisplay = new function () {
   this.directionsService;
@@ -119,17 +132,25 @@ function searchBoxInitialization(searchBox, markers, AdvancedMarkerElement, map)
     markers.push(marker);
 
     // Add event listener to favorite button
-    const favoriteButton = document.getElementById("favorite-button");
-    if (favoriteButton) {
-      favoriteButton.onclick = () => saveFavoriteSearch(place);
+    const favoriteButton1 = document.getElementById("favorite-button-1");
+    if (favoriteButton1) {
+      favoriteButton1.onclick = () => saveFavoriteSearch(place);
+    }
+    const favoriteButton2 = document.getElementById("favorite-button-2");
+    if (favoriteButton2) {
+      favoriteButton2.onclick = () => saveFavoriteSearch(place);
     }
   });
 }
 
 function navButtonInitialization(map, markersCollection) {
+  const directions = document.getElementById("directions-region");
+  directions.style.display = "none";
+
   const showButton = document.getElementById("search-button");
   showButton.addEventListener("click", () => {
     routeDisplay.render(map);
+    directions.style.display = "block";
   });
 
   const hideButton = document.getElementById("clear-button");
@@ -138,6 +159,7 @@ function navButtonInitialization(map, markersCollection) {
     document.getElementById("origin-input").value = "";
     document.getElementById("dest-input").value = "";
     clearMarkers(markersCollection);
+    directions.style.display = "none";
   });
 }
 
@@ -178,15 +200,39 @@ function saveFavoriteSearch(place) {
   }
 }
 
+function deleteFavoriteSearch(index) {
+  let favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+  favorites.splice(index, 1);
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+  displayFavoriteSearches();
+}
+
 function displayFavoriteSearches() {
   const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
   const favoritesList = document.getElementById("favorites-list");
   if (!favoritesList) return;
 
   favoritesList.innerHTML = "";
-  favorites.forEach(place => {
+
+  if(favorites.length === 0){
+    const emptyItem = document.createElement("p");
+    emptyItem.textContent = "Nothing to see here!";
+    favoritesList.appendChild(emptyItem);
+    return;
+  }
+
+  favorites.forEach((place, index) => {
     const listItem = document.createElement("li");
     listItem.textContent = place.name;
+
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "-";
+    deleteButton.className = "delete-fave";
+    deleteButton.onclick = () => {
+      deleteFavoriteSearch(index);
+    };
+
+    listItem.appendChild(deleteButton);
     favoritesList.appendChild(listItem);
   });
 }
