@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8">
     <title>UMBC Map</title>
     <script type="module" src="./index.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -25,41 +26,57 @@
 
     </div>
 
-    <!-- Search Input for Autocomplete 
-    <label for="search-input">Search for a place:</label>
-    <input type="text" id="search-input" name="search-input">  
-
-    Button to Add to Favorites
-    <button id="favorite-button">Add to Favorites</button>
-
-    List to Display Favorite Searches
-    <ul id="favorites-list"></ul> -->
     <div id="mainpage">
       <div id="sidebar">
         <div id="directions" style="padding-top: 15px; padding-bottom: 10px; font-weight: bold;">Search for a Destination</div>
+        
+        <!-- Search Bar -->
         <div id="searchbar">
-          <label for="origin-input"></label><input type="text" id="origin-input" name="origin-input" placeholder="Enter your starting location">
-          <label for="dest-input"></label><input type="text" id="dest-input" name="dest-input" placeholder="Enter your destination">
+          <div id="search-favorite">
+            <label for="origin-input"></label>
+            <input type="text" id="origin-input" name="origin-input" placeholder="Enter your starting location">
+            <button id="favorite-button-1">❤️</button>
+
+            <label for="dest-input"></label>
+            <input type="text" id="dest-input" name="dest-input" placeholder="Enter your destination">
+            <button id="favorite-button-2">❤️</button>
+          </div>
+
           <div id="buttons">
-            <button id="search-button">View Routes</button>
+            <button id="search-button">Go Now</button>
+            <button id="view-fave-button">Favorites</button>
             <button id="clear-button">Clear</button>
           </div>
         </div>
+
+        <!-- Favorite List Display -->
+          <div id="favorites-container" style="margin-top: 20px;">
+            <p style="font-weight: bold; font-size: 1vw;">Your Favorite Destinations:</p>
+            <div id="fave-bullet">
+              <ul id="favorites-list" style="padding-left: 2vw;"></ul>
+              <!-- <button id="delete-fave">-</button> -->
+            </div>
+          </div>
+
+        <!-- Directions Panel -->
         <div id="directions-region">
           <p style="font-weight: bold">Directions</p>
           <p>Use caution when following walking directions.</p>
         </div>
+
       </div>
 
+      <!-- Map Container -->
       <div id="map"></div>
     </div>
 
-    <button id="feedback-button" onclick="window.open('https\://forms.gle/EBJ5S11ruVYUaRyTA', '_blank')">Provide Feedback</button>
+    <!-- Feedback Button -->
+    <button id="feedback-button" onclick="window.open('https://forms.gle/EBJ5S11ruVYUaRyTA', '_blank')">Provide Feedback</button>
 
     <div id="footer">
-        <p>University of Maryland, Baltimore County &#x2022; 1000 Hilltop Circle, Baltimore, MD 21250<br>Copyright 2025 &copy; All Rights Reserved</p>
+      <p>University of Maryland, Baltimore County &#x2022; 1000 Hilltop Circle, Baltimore, MD 21250<br>Copyright 2025 &copy; All Rights Reserved</p>
     </div>
 
-  <script src="https://unpkg.com/@googlemaps/js-api-loader@1.x/dist/index.min.js"></script>
-</body>
+    <script src="https://unpkg.com/@googlemaps/js-api-loader@1.x/dist/index.min.js"></script>
+  </body>
 </html>
