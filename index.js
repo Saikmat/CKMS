@@ -293,16 +293,6 @@ export async function initMap() {
     destBox.bindTo("bounds", map);
   });
 
-  const umbcRetrieverHead = document.createElement('img');
-  umbcRetrieverHead.src = "./assets/UMBC_Retriever_Head.png";
-  umbcRetrieverHead.id = "commons-marker-icon";
-
-  const commonsMarkerView = new AdvancedMarkerElement({
-    map,
-    position: center,
-    content: umbcRetrieverHead,
-  });
-
   searchBoxInitialization(originBox, originMarkers, AdvancedMarkerElement, map);
   searchBoxInitialization(destBox, destMarkers, AdvancedMarkerElement, map);
 
