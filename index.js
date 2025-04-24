@@ -217,7 +217,7 @@ function displayFavoriteSearches() {
     const listItem = document.createElement("li");
 
     const itemName = document.createElement("div");
-    itemName.innerHTML = place.name;
+    itemName.innerHTML = "⭐ " + place.name;
     itemName.addEventListener('click', () => {
       const placeStub = {
         name: place.name,
