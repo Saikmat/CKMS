@@ -215,9 +215,10 @@ function displayFavoriteSearches() {
 
   favorites.forEach((place, index) => {
     const listItem = document.createElement("li");
-    listItem.textContent = place.name;
 
-    listItem.addEventListener('click', () => {
+    const itemName = document.createElement("div");
+    itemName.innerHTML = place.name;
+    itemName.addEventListener('click', () => {
       const placeStub = {
         name: place.name,
         place_id: place.place_id,
@@ -231,6 +232,7 @@ function displayFavoriteSearches() {
       routeDisplay.setDest(placeStub);
       document.getElementById("dest-input").value = place.name;
     });
+    listItem.appendChild(itemName);
 
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "-";
