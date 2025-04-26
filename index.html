@@ -29,20 +29,31 @@
         
         <!-- Search Bar -->
         <div id="searchbar">
-          <label for="origin-input"></label>
-          <input type="text" id="origin-input" name="origin-input" placeholder="Enter your starting location">
+          <div id="search-favorite">
+            <label for="origin-input"></label>
+            <input type="text" id="origin-input" name="origin-input" placeholder="Enter your starting location">
+            <button id="favorite-button-1">❤️</button>
 
-          <label for="dest-input"></label>
-          <input type="text" id="dest-input" name="dest-input" placeholder="Enter your destination">
-
-          <div id="buttons">
-            <button id="search-button">View Routes</button>
-            <button id="clear-button">Clear</button>
+            <label for="dest-input"></label>
+            <input type="text" id="dest-input" name="dest-input" placeholder="Enter your destination">
+            <button id="favorite-button-2">❤️</button>
           </div>
 
-          <!-- Add to Favorites Button -->
-          <button id="favorite-button" style="margin-top: 10px;">❤️ Favorite Destination</button>
+          <div id="buttons">
+            <button id="search-button">Go Now</button>
+            <button id="view-fave-button">Favorites</button>
+            <button id="clear-button">Clear</button>
+          </div>
         </div>
+
+        <!-- Favorite List Display -->
+          <div id="favorites-container" style="margin-top: 20px;">
+            <p style="font-weight: bold; font-size: 1vw;">Your Favorite Destinations:</p>
+            <div id="fave-bullet">
+              <ul id="favorites-list" style="padding-left: 2vw;"></ul>
+              <!-- <button id="delete-fave">-</button> -->
+            </div>
+          </div>
 
         <!-- Directions Panel -->
         <div id="directions-region">
@@ -50,11 +61,6 @@
           <p>Use caution when following walking directions.</p>
         </div>
 
-        <!-- Favorite List Display -->
-        <div id="favorites-container" style="margin-top: 20px;">
-          <p style="font-weight: bold">⭐ Your Favorite Destinations:</p>
-          <ul id="favorites-list" style="padding-left: 20px;"></ul>
-        </div>
       </div>
 
       <!-- Map Container -->
