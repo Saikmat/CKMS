@@ -1,5 +1,11 @@
-import {test, expect, it, describe} from 'vitest'
-import {initMap} from "./index";
+/*
+ * @vitest-environment jsdom
+*/
+import {test, expect, it, describe, beforeEach, getByRole} from 'vitest'
+import html from "./index.html?raw";
+import {initMap} from "./index.js";
+document.documentElement.innerHTML = html;
+
 
 // noinspection JSUnusedLocalSymbols
 const clickable_element_width = 10;
@@ -21,12 +27,12 @@ describe('Campus Navigation App', () => {
     describe('side matter', () => {
         describe('search bars', () => {
             it('destination bar', () => {
-                let destination_bar = document.getElementById('origin-input');
+                let destination_bar = document.getElementById('dest-input');
                 expect(destination_bar.innerText).toBe('Enter your destination');
                 expect(destination_bar.offsetWidth).gte(10); // make sure it's not too narrow
             });
             it('start bar', () => {
-                let start_bar = document.getElementById('pac-input');
+                let start_bar = document.getElementById('origin-input');
                 expect(start_bar.innerText).toBe('Enter your starting location');
                 expect(start_bar.offsetWidth).gte(10); // make sure it's not too narrow
             });

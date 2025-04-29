@@ -1,29 +1,6 @@
 import { Loader } from "@googlemaps/js-api-loader";
 import * as destinations from "./destinations.js";
 
-// Navbar slide function
-const sidebar = document.getElementById("sidebar");
-const navbutton = document.getElementById("navbutton");
-const mainMap = document.getElementById("map");
-
-navbutton.addEventListener('click', () => {
-  sidebar.classList.toggle('active');
-  mainMap.classList.toggle('active');
-});
-
-// Hide/display favorites list on button click
-const faveButton = document.getElementById("view-fave-button");
-
-faveButton.addEventListener('click', () => {
-    const faveDiv = document.getElementById("favorites-container");
-    if(faveDiv.style.display === "none"){
-      faveDiv.style.display = "block";
-    }
-    else{
-      faveDiv.style.display = "none";
-    }
-});
-
 // Route display functionality
 const routeDisplay = new function () {
   this.directionsService;
@@ -159,6 +136,31 @@ function clearMarkers(markersCollection) {
       marker.setMap(null);
     });
     markers.length = 0;
+  });
+}
+
+function navFavBarUISetup(){
+  // Navbar slide function
+  const sidebar = document.getElementById("sidebar");
+  const navbutton = document.getElementById("navbutton");
+  const mainMap = document.getElementById("map");
+
+  navbutton.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
+    mainMap.classList.toggle('active');
+  });
+
+  // Hide/display favorites list on button click
+  const faveButton = document.getElementById("view-fave-button");
+
+  faveButton.addEventListener('click', () => {
+      const faveDiv = document.getElementById("favorites-container");
+      if(faveDiv.style.display === "none"){
+        faveDiv.style.display = "block";
+      }
+      else{
+        faveDiv.style.display = "none";
+      }
   });
 }
 
@@ -306,6 +308,7 @@ export async function initMap() {
 
   routeDisplay.init();
   navButtonInitialization(map, allMarks);
+  navFavBarUISetup();
 
   displayFavoriteSearches(); // Display saved favorites on load
 
