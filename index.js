@@ -130,16 +130,6 @@ function searchBoxInitialization(searchBox, markers, AdvancedMarkerElement, map)
     });
 
     markers.push(marker);
-
-    // Add event listener to favorite button
-    const favoriteButton1 = document.getElementById("favorite-button-1");
-    if (favoriteButton1) {
-      favoriteButton1.onclick = () => saveFavoriteSearch(place);
-    }
-    const favoriteButton2 = document.getElementById("favorite-button-2");
-    if (favoriteButton2) {
-      favoriteButton2.onclick = () => saveFavoriteSearch(place);
-    }
   });
 }
 
@@ -192,6 +182,8 @@ function getMap(center) {
 
 // --- FAVORITES FUNCTIONS ---
 function saveFavoriteSearch(place) {
+  //if(!place.place_id) return;
+
   let favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
   if (!favorites.some(fav => fav.place_id === place.place_id)) {
     favorites.push(place);
@@ -223,9 +215,10 @@ function displayFavoriteSearches() {
 
   favorites.forEach((place, index) => {
     const listItem = document.createElement("li");
-    listItem.textContent = place.name;
 
-    listItem.addEventListener('click', () => {
+    const itemName = document.createElement("div");
+    itemName.innerHTML = "⭐ " + place.name;
+    itemName.addEventListener('click', () => {
       const placeStub = {
         name: place.name,
         place_id: place.place_id,
@@ -239,6 +232,7 @@ function displayFavoriteSearches() {
       routeDisplay.setDest(placeStub);
       document.getElementById("dest-input").value = place.name;
     });
+    listItem.appendChild(itemName);
 
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "-";
@@ -270,6 +264,13 @@ export async function initMap() {
   originBox.addListener("place_changed", () => {
     routeDisplay.setOrigin(originBox.getPlace());
   });
+  const topFavButton = document.getElementById("favorite-button-1");
+  if (topFavButton) {
+    topFavButton.onclick = () => {
+      let place = originBox.getPlace();
+      if(place !== undefined) saveFavoriteSearch(place);
+    };
+  }
 
   const destInput = document.getElementById("dest-input");
   const destBox = new google.maps.places.Autocomplete(destInput, {
@@ -279,20 +280,17 @@ export async function initMap() {
   destBox.addListener("place_changed", () => {
     routeDisplay.setDest(destBox.getPlace());
   });
+  const bottomFavButton = document.getElementById("favorite-button-2");
+  if (bottomFavButton) {
+    bottomFavButton.onclick = () => {
+      let place = destBox.getPlace();
+      if(place !== undefined) saveFavoriteSearch(place);
+    };
+  }
 
   map.addListener("bounds_changed", () => {
     originBox.bindTo("bounds", map);
     destBox.bindTo("bounds", map);
-  });
-
-  const umbcRetrieverHead = document.createElement('img');
-  umbcRetrieverHead.src = "./assets/UMBC_Retriever_Head.png";
-  umbcRetrieverHead.id = "commons-marker-icon";
-
-  const commonsMarkerView = new AdvancedMarkerElement({
-    map,
-    position: center,
-    content: umbcRetrieverHead,
   });
 
   searchBoxInitialization(originBox, originMarkers, AdvancedMarkerElement, map);
@@ -302,6 +300,10 @@ export async function initMap() {
   navButtonInitialization(map, allMarks);
 
   displayFavoriteSearches(); // Display saved favorites on load
+
+  //hide favorites on load
+  const favs = document.getElementById("favorites-container");
+  favs.style.display = "none";
 }
 
 const loader = new Loader({
