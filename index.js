@@ -1,22 +1,22 @@
 import { Loader } from "@googlemaps/js-api-loader";
 import * as destinations from "./destinations.js";
 
-let lastSelectedOriginPlace = null;
-let lastSelectedDestPlace = null;
-
 
 // Navbar slide function
 const sidebar = document.getElementById("sidebar");
 const navbutton = document.getElementById("navbutton");
 const mainMap = document.getElementById("map");
 
+
 navbutton.addEventListener('click', () => {
   sidebar.classList.toggle('active');
   mainMap.classList.toggle('active');
 });
 
+
 // Hide/display favorites list on button click
 const faveButton = document.getElementById("view-fave-button");
+
 
 faveButton.addEventListener('click', () => {
     const faveDiv = document.getElementById("favorites-container");
@@ -28,6 +28,7 @@ faveButton.addEventListener('click', () => {
     }
 });
 
+
 // Route display functionality
 const routeDisplay = new function () {
   this.directionsService;
@@ -35,13 +36,16 @@ const routeDisplay = new function () {
   this.origin;
   this.dest;
 
+
   this.init = function () {
     this.directionsService = new google.maps.DirectionsService();
     this.directionsRenderer = new google.maps.DirectionsRenderer({ preserveViewport: true });
   };
 
+
   this.setOrigin = function (origin) {
     if (!origin.geometry || !origin.place_id) return;
+
 
     this.origin = {
       lat: origin.geometry.location.lat(),
@@ -49,8 +53,10 @@ const routeDisplay = new function () {
     };
   };
 
+
   this.setDest = function (dest) {
     if (!dest.geometry || !dest.place_id) return;
+
 
     this.dest = {
       lat: dest.geometry.location.lat(),
@@ -58,9 +64,11 @@ const routeDisplay = new function () {
     };
   };
 
+
   this.render = function (map) {
     this.directionsRenderer.setMap(map);
     let self = this;
+
 
     if (this.origin !== undefined && this.dest !== undefined) {
       this.directionsService.route({
@@ -69,8 +77,9 @@ const routeDisplay = new function () {
         travelMode: google.maps.TravelMode.WALKING
       }, function (response, status) {
         if (status === "OK") {
-          self.directionsRenderer.setDirections(response);
           self.directionsRenderer.setPanel(document.getElementById("directions-region"));
+          self.directionsRenderer.setDirections(response);
+
         } else {
           console.log('Directions request failed due to ' + status);
         }
@@ -78,30 +87,32 @@ const routeDisplay = new function () {
     }
   };
 
+
   this.hide = function () {
     this.directionsRenderer.setMap(null);
     this.directionsRenderer.setPanel(null);
   };
 };
 
-function searchBoxInitialization(searchBox, markers, AdvancedMarkerElement, map, label) {
+let lastFocusedInput = "dest"; // Tracks which input field was last focused
+
+
+function searchBoxInitialization(searchBox, markers, AdvancedMarkerElement, map) {
   searchBox.addListener("place_changed", () => {
     const place = searchBox.getPlace();
-    if (label === "origin") {
-      lastSelectedOriginPlace = place;
-    } else if (label === "dest") {
-      lastSelectedDestPlace = place;
-    }
     markers.forEach((marker) => {
       marker.setMap(null);
     });
     markers.length = 0;
 
+
     if (!place.geometry || !place.geometry.location) return;
+
 
     let icon = "";
     let content = "<div style='max-height: 10vw; max-width: 35vw; overflow: auto;'>";
     let desc = destinations.buildings.find(b => b.name === place.name);
+
 
     if (desc != undefined) {
       content += `<h1 style='font-family: "Inter", sans-serif; font-size: 1vw;'>${place.name}</h1>
@@ -125,32 +136,40 @@ function searchBoxInitialization(searchBox, markers, AdvancedMarkerElement, map,
       }
     }
 
+
     content += "</div>";
+
 
     const marker = new AdvancedMarkerElement({
       map,
       position: place.geometry.location,
     });
 
+
     const infoWindow = new google.maps.InfoWindow({ content });
+
 
     marker.addListener("gmp-click", () => {
       infoWindow.open(map, marker);
     });
 
+
     markers.push(marker);
   });
 }
 
+
 function navButtonInitialization(map, markersCollection) {
   const directions = document.getElementById("directions-region");
   directions.style.display = "none";
+
 
   const showButton = document.getElementById("search-button");
   showButton.addEventListener("click", () => {
     routeDisplay.render(map);
     directions.style.display = "block";
   });
+
 
   const hideButton = document.getElementById("clear-button");
   hideButton.addEventListener("click", () => {
@@ -162,6 +181,7 @@ function navButtonInitialization(map, markersCollection) {
   });
 }
 
+
 function clearMarkers(markersCollection) {
   markersCollection.map((markers) => {
     markers.forEach((marker) => {
@@ -170,6 +190,7 @@ function clearMarkers(markersCollection) {
     markers.length = 0;
   });
 }
+
 
 function getMap(center) {
   return new google.maps.Map(document.getElementById("map"), {
@@ -189,15 +210,21 @@ function getMap(center) {
   });
 }
 
+
 // --- FAVORITES FUNCTIONS ---
 function saveFavoriteSearch(place) {
   let favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+
+
   if (!favorites.some(fav => fav.place_id === place.place_id)) {
     favorites.push(place);
     localStorage.setItem("favorites", JSON.stringify(favorites));
     displayFavoriteSearches();
+    document.getElementById("favorites-container").style.display = "block";
+    console.log("Saved favorite:", place.name);
   }
 }
+
 
 function deleteFavoriteSearch(index) {
   let favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
@@ -206,12 +233,15 @@ function deleteFavoriteSearch(index) {
   displayFavoriteSearches();
 }
 
+
 function displayFavoriteSearches() {
   const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
   const favoritesList = document.getElementById("favorites-list");
   if (!favoritesList) return;
 
+
   favoritesList.innerHTML = "";
+
 
   if(favorites.length === 0){
     const emptyItem = document.createElement("p");
@@ -220,11 +250,15 @@ function displayFavoriteSearches() {
     return;
   }
 
+
   favorites.forEach((place, index) => {
     const listItem = document.createElement("li");
-    listItem.textContent = place.name;
 
-    listItem.addEventListener('click', () => {
+
+    const itemName = document.createElement("div");
+    //itemName.innerHTML = "⭐ " + place.name;
+    itemName.innerHTML = place.name;
+    itemName.addEventListener('click', () => {
       const placeStub = {
         name: place.name,
         place_id: place.place_id,
@@ -235,9 +269,19 @@ function displayFavoriteSearches() {
           }
         }
       };
-      routeDisplay.setDest(placeStub);
-      document.getElementById("dest-input").value = place.name;
+      //routeDisplay.setDest(placeStub);
+      //document.getElementById("dest-input").value = place.name;
+      if (lastFocusedInput === "origin") {
+        routeDisplay.setOrigin(placeStub);
+        document.getElementById("origin-input").value = place.name;
+      } else {
+        routeDisplay.setDest(placeStub);
+        document.getElementById("dest-input").value = place.name;
+      }
+      
     });
+    listItem.appendChild(itemName);
+
 
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "-";
@@ -246,20 +290,103 @@ function displayFavoriteSearches() {
       deleteFavoriteSearch(index);
     };
 
+
     listItem.appendChild(deleteButton);
     favoritesList.appendChild(listItem);
   });
 }
+
+function saveRecentSearch(place) {
+  let recent = JSON.parse(localStorage.getItem("recentSearches") || "[]");
+
+  // Prevent duplicates
+  recent = recent.filter(p => p.place_id !== place.place_id);
+
+  // Add new to front
+  recent.unshift(place);
+
+  // Limit to last 5 searches
+  if (recent.length > 5) {
+    recent = recent.slice(0, 5);
+  }
+
+  localStorage.setItem("recentSearches", JSON.stringify(recent));
+  displayRecentSearches();
+}
+
+function displayRecentSearches() {
+  const recent = JSON.parse(localStorage.getItem("recentSearches") || "[]");
+  const recentList = document.getElementById("recent-list");
+  if (!recentList) return;
+
+  recentList.innerHTML = "";
+
+  if (recent.length === 0) {
+    const emptyItem = document.createElement("p");
+    emptyItem.textContent = "No recent searches.";
+    recentList.appendChild(emptyItem);
+    return;
+  }
+
+  recent.forEach(place => {
+    const listItem = document.createElement("li");
+    listItem.textContent = place.name;
+    listItem.addEventListener("click", () => {
+      const placeStub = {
+        name: place.name,
+        place_id: place.place_id,
+        geometry: {
+          location: {
+            lat: () => place.geometry.location.lat,
+            lng: () => place.geometry.location.lng
+          }
+        }
+      };
+      // Optionally reuse as destination or origin
+      //routeDisplay.setDest(placeStub);
+      //document.getElementById("dest-input").value = place.name;
+      if (lastFocusedInput === "origin") {
+        routeDisplay.setOrigin(placeStub);
+        document.getElementById("origin-input").value = place.name;
+      } else {
+        routeDisplay.setDest(placeStub);
+        document.getElementById("dest-input").value = place.name;
+      }
+    });
+    recentList.appendChild(listItem);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const clearRecentBtn = document.getElementById("clear-recent-button");
+  if (clearRecentBtn) {
+    clearRecentBtn.addEventListener("click", clearRecentSearches);
+  }
+
+  // Display recent searches on load
+  displayRecentSearches();
+});
+
+
+function clearRecentSearches() {
+  localStorage.removeItem("recentSearches");
+  displayRecentSearches();
+}
+
+
+
 
 // --- MAIN INIT ---
 export async function initMap() {
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
   const center = { lat: 39.254752, lng: -76.710837 }
 
+
   const map = getMap(center);
   let originMarkers = [];
   let destMarkers = [];
   let allMarks = [originMarkers, destMarkers];
+
 
   const originInput = document.getElementById("origin-input");
   const originBox = new google.maps.places.Autocomplete(originInput, {
@@ -267,8 +394,23 @@ export async function initMap() {
     strictBounds: true,
   });
   originBox.addListener("place_changed", () => {
-    routeDisplay.setOrigin(originBox.getPlace());
+    //routeDisplay.setOrigin(originBox.getPlace());
+    const place = originBox.getPlace();
+    routeDisplay.setOrigin(place);
+    saveRecentSearch(place); // Move here
   });
+  const topFavButton = document.getElementById("favorite-button-1");
+  if (topFavButton) {
+    topFavButton.onclick = () => {
+      const place = originBox.getPlace();
+      if (place && place.place_id && place.geometry && place.geometry.location) {
+        saveFavoriteSearch(place);
+      } else {
+        alert("Please select a location from the suggestions.");
+      }
+    };
+  }  
+
 
   const destInput = document.getElementById("dest-input");
   const destBox = new google.maps.places.Autocomplete(destInput, {
@@ -276,51 +418,57 @@ export async function initMap() {
     strictBounds: true,
   });
   destBox.addListener("place_changed", () => {
-    routeDisplay.setDest(destBox.getPlace());
+    const place = destBox.getPlace();
+    routeDisplay.setDest(place);
+    saveRecentSearch(place); // Move here
   });
+  const bottomFavButton = document.getElementById("favorite-button-2");
+  if (bottomFavButton) {
+    bottomFavButton.onclick = () => {
+      const place = destBox.getPlace();
+      if (place && place.place_id && place.geometry && place.geometry.location) {
+        saveFavoriteSearch(place);
+      } else {
+        alert("Please select a location from the suggestions.");
+      }
+    };
+  }
+ 
+
 
   map.addListener("bounds_changed", () => {
     originBox.bindTo("bounds", map);
     destBox.bindTo("bounds", map);
   });
 
-  const umbcRetrieverHead = document.createElement('img');
-  umbcRetrieverHead.src = "./assets/UMBC_Retriever_Head.png";
-  umbcRetrieverHead.id = "commons-marker-icon";
 
-  const commonsMarkerView = new AdvancedMarkerElement({
-    map,
-    position: center,
-    content: umbcRetrieverHead,
-  });
-
-  searchBoxInitialization(originBox, originMarkers, AdvancedMarkerElement, map, "origin");
-  searchBoxInitialization(destBox, destMarkers, AdvancedMarkerElement, map, "dest");
+  searchBoxInitialization(originBox, originMarkers, AdvancedMarkerElement, map);
+  searchBoxInitialization(destBox, destMarkers, AdvancedMarkerElement, map);
+  //saveRecentSearch(place);
 
 
   routeDisplay.init();
   navButtonInitialization(map, allMarks);
 
+
   displayFavoriteSearches(); // Display saved favorites on load
-  const favoriteButton1 = document.getElementById("favorite-button-1");
-if (favoriteButton1) {
-  favoriteButton1.onclick = () => {
-    if (lastSelectedOriginPlace) {
-      saveFavoriteSearch(lastSelectedOriginPlace);
-    }
-  };
+
+
+  //hide favorites on load
+  const favs = document.getElementById("favorites-container");
+  //favs.style.display = "none";
+  favs.style.display = "block";
+
+  //adding here
+  originInput.addEventListener("focus", () => {
+    lastFocusedInput = "origin";
+  });
+  destInput.addEventListener("focus", () => {
+    lastFocusedInput = "dest";
+  });
+  
 }
 
-const favoriteButton2 = document.getElementById("favorite-button-2");
-if (favoriteButton2) {
-  favoriteButton2.onclick = () => {
-    if (lastSelectedDestPlace) {
-      saveFavoriteSearch(lastSelectedDestPlace);
-    }
-  };
-}
-
-}
 
 const loader = new Loader({
   apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
@@ -329,8 +477,10 @@ const loader = new Loader({
   retries: 4
 });
 
+
 loader.importLibrary("routes").then(async () => {
   await initMap();
 }).catch((e) => {
   console.log("Failed to load API " + e);
 });
+
