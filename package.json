@@ -6,6 +6,9 @@
     },
     "dependencies": {
       "@googlemaps/js-api-loader": "^1.16.8",
+      "@testing-library/dom": "^10.4.0",
+      "@testing-library/jest-dom": "^6.6.3",
+      "esm": "^3.2.25",
       "jsdom": "^26.1.0",
       "vitest": "^3.1.2"
     }
