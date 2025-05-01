@@ -140,7 +140,6 @@ function navButtonInitialization(map, markersCollection) {
     directions.style.display = "block";
   });
 
-
   const hideButton = document.getElementById("clear-button");
   hideButton.addEventListener("click", () => {
     routeDisplay.hide();
@@ -161,7 +160,7 @@ function clearMarkers(markersCollection) {
   });
 }
 
-function navFavBarUISetup(){
+function miscUISetup(){
   // Navbar slide function
   const sidebar = document.getElementById("sidebar");
   const navbutton = document.getElementById("navbutton");
@@ -177,6 +176,18 @@ function navFavBarUISetup(){
 
   faveButton.addEventListener('click', () => {
       const faveDiv = document.getElementById("favorites-container");
+      if(faveDiv.style.display === "none"){
+        faveDiv.style.display = "block";
+      }
+      else{
+        faveDiv.style.display = "none";
+      }
+  });
+
+  const recentButton = document.getElementById("recent-button");
+
+  recentButton.addEventListener('click', () => {
+      const faveDiv = document.getElementById("recent-container");
       if(faveDiv.style.display === "none"){
         faveDiv.style.display = "block";
       }
@@ -245,7 +256,7 @@ function displayFavoriteSearches() {
 
   favorites.forEach((place, index) => {
     const listItem = document.createElement("li");
-
+    const itemWrapper = document.createElement("div");
     const itemName = document.createElement("div");
     itemName.innerHTML = place.name;
     itemName.addEventListener('click', () => {
@@ -277,7 +288,9 @@ function displayFavoriteSearches() {
       deleteFavoriteSearch(index);
     };
 
-    listItem.appendChild(deleteButton);
+    itemWrapper.appendChild(itemName);
+    itemWrapper.appendChild(deleteButton);
+    listItem.appendChild(itemWrapper);
     favoritesList.appendChild(listItem);
   });
 }
@@ -359,9 +372,6 @@ function clearRecentSearches() {
   displayRecentSearches();
 }
 
-
-
-
 // --- MAIN INIT ---
 export async function initMap() {
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
@@ -431,14 +441,15 @@ export async function initMap() {
 
   routeDisplay.init();
   navButtonInitialization(map, allMarks);
-  navFavBarUISetup();
+  miscUISetup();
 
   displayFavoriteSearches(); // Display saved favorites on load
 
   //hide favorites on load
   const favs = document.getElementById("favorites-container");
-  //favs.style.display = "none";
-  favs.style.display = "block";
+  favs.style.display = "none";
+  const recents = document.getElementById("recent-container");
+  recents.style.display = "none";
 
   //adding here
   originInput.addEventListener("focus", () => {

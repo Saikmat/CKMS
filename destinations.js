@@ -189,7 +189,7 @@ export const destinations = [
     onGoogle: "N"
   },
   {
-    name: "Retriever Essentials",
+    name: "Retriever Essentials - The Essential Space Free Grocery Store",
     location: "The Commons Level 1",
     category: "Food",
     onGoogle: "Y",
@@ -276,14 +276,14 @@ export const destinations = [
     onGoogle: "N"
   },
   {
-    name: "Retriever Integrated Health",
+    name: "UMBC Retriever Integrated Health/Counseling",
     location: "The Center for Well-Being",
     category: "Health",
     onGoogle: "Y",
     description: "Retriever Integrated Health (RIH) brings together the former University Health Services, and the Counseling Center offices to work in a collaborative, holistic approach to support your well-being and success. Our team is committed to providing the UMBC community with high-quality services, support, and resources. RIH is an interdisciplinary team that includes our administrative staff members and a variety of healthcare professionals, representing disciplines of acupuncture, dietetics, health education, massage, nursing, medicine, psychiatry, psychology, counseling, and social work."
   },
   {
-    name: "Police Department",
+    name: "UMBC Campus Police Department",
     location: "UMBC Police Department\r\nCentral Plant",
     category: "Student support",
     onGoogle: "Y",
@@ -341,7 +341,7 @@ export const destinations = [
     name: "Parking Services",
     location: "900 Walker Suite 107",
     category: "Miscellaneous",
-    onGoogle: "Y",
+    onGoogle: "N",
     description: "UMBC Parking Services is committed to providing equitable parking infrastructure for all students, faculty, staff, and visitors through the use of innovative, sustainable, and customer-driven measures that support the university’s mission."
   },
   {
@@ -358,7 +358,7 @@ export const destinations = [
     description: "The mission of the Registrar's Office is to provide the UMBC community with high-quality services related to academic programs, enrollment, records, and graduation. We are committed to ensuring the integrity of academic records and we value diversity and creativity while maintaining due diligence in professionalism, respect, and efficiency in our work. "
   },
   {
-    name: "Residential Life",
+    name: "Residential Life, UMBC",
     location: "Erickson Hall",
     category: "Housing",
     onGoogle: "Y",
@@ -371,10 +371,11 @@ export const destinations = [
     onGoogle: "N"
   },
   {
-    name: "Transit",
+    name: "UMBC Transit",
     location: "Warehouse 113",
     category: "Miscellaneous",
-    onGoogle: "Y"
+    onGoogle: "Y",
+    description: "UMBC Transit provides safe, reliable, responsive shuttle and charter bus services to meet the transportation needs of the UMBC community. Shuttle routes cover residential communities near campus, as well as shopping areas surrounding UMBC."
   },
   {
     name: "Student Conduct and Community Standards",
@@ -431,7 +432,7 @@ export const buildings = [
     description: "The UMBC Commons is the central student activities center, a 143,000 sq ft high-tech facility, serving as a hub for campus life with dining, entertainment, meeting spaces, and student services, fostering community among students, faculty, and staff. <br><br>Notable locations include:<br>\u2022 Absurd Bird & Burgers<br>\u2022 Campus Information Center<br>\u2022 Campus Life<br>\u2022 Center for Democracy and Civic Life<br>\u2022 Commons Retriever Market<br>\u2022 CommonVision and UMBC Design and Print Center<br>\u2022 Copperhead Jack's<br>\u2022 Dean of Students and Student Support Services<br>\u2022 Dunkin' Donuts<br>\u2022 Event and Conference Services<br>\u2022 Fireside Lounge<br>\u2022 Flat Tuesday's<br>\u2022 Fraternities and Sororities<br>\u2022 Gameroom<br>\u2022 Graduate Student Life<br>\u2022 Halal Shack<br>\u2022 Indian Kitchen<br>\u2022 Mato<br>\u2022 Office of the Vice President For Student Affairs<br>\u2022 Retriever Essentials<br>\u2022 Retriever Sports Zone<br>\u2022 Student Affairs<br>\u2022 Student Events Board<br>\u2022 Student Government Association<br>\u2022 Student Involvement Center<br>\u2022 Student Organizations Space"
   },
   {
-    name: "Interdisciplinary Life Sciences Building",
+    name: "UMBC Interdisciplinary Life Sciences Building",
     coordinates: {
       lat: 39.2539082,
       lng: -76.7111874
@@ -511,7 +512,7 @@ export const buildings = [
     description: "Sherman Hall at UMBC, a brick building built in 1980, houses classrooms, a lecture hall, and academic offices for various departments, including Modern Languages and Education, and is undergoing a renovation project to meet the university's needs for the next 30 years. <br><br>Notable locations include:<br>\u2022 Meyerhoff Scholars Program<br>\u2022 Office for Academic and Pre-Professional Advising<br>\u2022 Registrar's Office"
   },
   {
-    name: "Information Technology / Engineering Building",
+    name: "Information Technology/ Engineering",
     coordinates: {
       lat: NaN,
       lng: NaN
@@ -519,7 +520,7 @@ export const buildings = [
     description: "The UMBC Information Technology and Engineering Building (ITE) houses the College of Engineering and Information Technology (COEIT), including departments like Computer Science and Electrical Engineering, and the Engineering and Computing Education Program, as well as research facilities like the PI2 Immersive Hybrid Reality Lab"
   },
   {
-    name: "Retriever Activies Center",
+    name: "Retriever Activities Center",
     coordinates: {
       lat: 39.2528573,
       lng: -76.7125458
@@ -535,7 +536,7 @@ export const buildings = [
     description: "The UMBC Administration Building is the tallest building on campus at ten stories, housing offices for UMBC's president, the Graduate School, International Education Services, and Student Business Services, among other administrative functions. <br><br>Notable locations include:<br>\u2022 Administration and Finance<br>\u2022 Financial Services<br>\u2022 Human Resources & Strategic Talent Management<br>\u2022 Institutional Research, Analysis & Decision Support<br>\u2022 Office of Budget and Resource Analysis<br>\u2022 Office of Equity and Civil Rights<br>\u2022 Procurement and Strategic Sourcing<br>\u2022 Student Business Services"
   },
   {
-    name: "Performing Arts and Humantities Building",
+    name: "Performing Arts and Humanities Building",
     coordinates: {
       lat: 39.2552507,
       lng: -76.7153731
@@ -591,7 +592,7 @@ export const buildings = [
     description: "Erickson Hall at UMBC is a residence hall that offers suite-style housing, providing students with semi-private communal spaces and access to community kitchens, lounges, and laundry rooms. It is also home to the Shriver Living Learning Center. <br><br>Notable locations include:<br>\u2022 Residential Life"
   },
   {
-    name: "Hillside Apartments",
+    name: "Hillside Apartment",
     coordinates: {
       lat: NaN,
       lng: NaN
@@ -599,7 +600,7 @@ export const buildings = [
     description: "Hillside Apartments at UMBC offer suite-style apartment living with four single-occupancy bedrooms, shared bathrooms, and common living areas, all furnished with essentials like beds, desks, and chairs."
   },
   {
-    name: "Terrace Apartments",
+    name: "Tuckahoe, Terrace Apartments, UMBC",
     coordinates: {
       lat: 42.95789,
       lng: -77.345755
@@ -639,7 +640,7 @@ export const buildings = [
     description: "The UMBC Center for Well-Being is a facility that houses the Counseling Center, University Health Services, and offices of Student Conduct and Community Standards, aiming to provide a centralized, integrative approach to mental and physical well-being, and convenient access to health and wellness services for students. <br><br>Notable locations include:<br>\u2022 Retriever Integrated Health<br>\u2022 Student Conduct and Community Standards"
   },
   {
-    name: "True Grit's",
+    name: "True Grit's - UMBC Campus Dining Hall",
     coordinates: {
       lat: 39.2557329,
       lng: -76.7077426
@@ -647,7 +648,7 @@ export const buildings = [
     description: "True Grit's is UMBC's all-you-care-to-eat dining hall, located in the center of the residential halls, offering breakfast, lunch, dinner, and late-night meals, with options for Halal, Kosher, vegetarian, and gluten-free diets."
   },
   {
-    name: "Preschool Center",
+    name: "Y Preschool at UMBC",
     coordinates: {
       lat: NaN,
       lng: NaN
@@ -655,7 +656,7 @@ export const buildings = [
     description: "The Y Preschool at UMBC, a program of the Y of Central Maryland, provides a safe, happy, and enriching environment for children ages 2-5, focusing on intellectual, emotional, and physical growth through a curriculum designed to stimulate learning and prepare children for kindergarten and beyond"
   },
   {
-    name: "Chesapeake Arena",
+    name: "Chesapeake Employers Insurance Arena",
     coordinates: {
       lat: 35.4634247,
       lng: -97.5151138
@@ -663,7 +664,7 @@ export const buildings = [
     description: "The Chesapeake Employers Insurance Arena, formerly the UMBC Event Center, is a multi-purpose arena on the UMBC campus in Baltimore, MD, serving as the home for the UMBC Retrievers men's and women's basketball and women's volleyball teams, and hosting concerts, commencements, and other events."
   },
   {
-    name: "Warehouse",
+    name: "UMBC Warehouse, Central Receiving",
     coordinates: {
       lat: NaN,
       lng: NaN
@@ -671,7 +672,7 @@ export const buildings = [
     description: "The campus data warehouse, known as REX (Report EXchange), which is a reporting and decision support environment that integrates data from various systems across the university."
   },
   {
-    name: "Facilities Management",
+    name: "UMBC Facilities Managment",
     coordinates: {
       lat: NaN,
       lng: NaN
@@ -695,7 +696,7 @@ export const buildings = [
     description: "The Administration Drive Garage at UMBC is a metered garage where visitor parking is available, specifically on the upper level, and parking costs $2.00 per hour, payable by MasterCard, Visa, or exact currency, with no change or refunds provided"
   },
   {
-    name: "900 Walker",
+    name: "900 Walker Avenue",
     coordinates: {
       lat: NaN,
       lng: NaN
@@ -703,7 +704,7 @@ export const buildings = [
     description: "900 Walker Avenue, located near the Walker Apartments and across from the Baltimore County Police Building, is the home of the UMBC Parking Services and the Department of Emergency and Disaster Health Systems, and also houses research centers and units for the College of Engineering and Information Technology. <br><br>Notable locations include:<br>\u2022 Parking Services"
   },
   {
-    name: "Army ROTC",
+    name: "Army ROTC Building",
     coordinates: {
       lat: NaN,
       lng: NaN
@@ -751,7 +752,7 @@ export const buildings = [
     description: "The UMBC Office of Enrollment Management serves as the central hub for enrollment services, providing leadership, administrative, and technical support to various departments and units, including Undergraduate Admission and Orientation, Academic and Pre-professional Advising, and Financial Aid and Scholarships."
   },
   {
-    name: "Financial Aid and Scholarships",
+    name: "Financial Aid & Scholarships",
     coordinates: {
       lat: NaN,
       lng: NaN
@@ -775,7 +776,7 @@ export const buildings = [
     description: "The Walker Avenue Garage on the UMBC campus is a multi-level parking structure located on Walker Avenue, offering parking for visitors and those with permits, with the upper level being designated for visitor parking."
   },
   {
-    name: "Lot 7",
+    name: "UMBC Lot 7",
     coordinates: {
       lat: NaN,
       lng: NaN
