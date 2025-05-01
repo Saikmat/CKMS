@@ -1,5 +1,12 @@
-import {test, expect, it, describe} from 'vitest'
-import {initMap} from "./index";
+/*
+ * @vitest-environment jsdom
+*/
+import {test, expect, it, describe, beforeEach} from 'vitest'
+import { screen, getByRole } from '@testing-library/dom';
+import html from "./index.html?raw";
+import {initMap} from "./index.js";
+document.documentElement.innerHTML = html;
+
 
 // noinspection JSUnusedLocalSymbols
 const clickable_element_width = 10;
@@ -14,21 +21,19 @@ test('map deployment', () => {
 })
 
 // test that title is in the right place
-test('text locations', async ({page}) => {
-    await expect(page.getByRole('heading', {name: `UMBC Interactive Map`, exact: true})); // not right, work on this
+test('text locations', async () => {
+    await expect(getByRole(document.body, 'heading', { name: `Interactive Map`, exact: true })); // not right, work on this
 });
 describe('Campus Navigation App', () => {
     describe('side matter', () => {
         describe('search bars', () => {
             it('destination bar', () => {
-                let destination_bar = document.getElementById('origin-input');
-                expect(destination_bar.innerText).toBe('Enter your destination');
-                expect(destination_bar.offsetWidth).gte(10); // make sure it's not too narrow
+                let destination_bar = document.getElementById('dest-input');
+                expect(destination_bar.getAttribute('placeholder')).toBe('Enter your destination');
             });
             it('start bar', () => {
-                let start_bar = document.getElementById('pac-input');
-                expect(start_bar.innerText).toBe('Enter your starting location');
-                expect(start_bar.offsetWidth).gte(10); // make sure it's not too narrow
+                let start_bar = document.getElementById('origin-input');
+                expect(start_bar.getAttribute('placeholder')).toBe('Enter your starting location');
             });
         });
 
@@ -36,8 +41,7 @@ describe('Campus Navigation App', () => {
             it('search button', () => {
                 let search_button = document.getElementById('search-button');
                 expect(search_button).toBeDefined();
-                expect(search_button.innerText).toBe('Go Now');
-                expect(search_button.fillColor).toBe('#ffffff'); // fix color
+                expect(screen.getByRole('button', { name: 'Go Now', hidden: true })).toBeInTheDocument();
                 expect(search_button.offsetWidth).gte(10);
             });
 

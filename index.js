@@ -1,42 +1,6 @@
 import { Loader } from "@googlemaps/js-api-loader";
 import * as destinations from "./destinations.js";
 
-
-// Navbar slide function
-const sidebar = document.getElementById("sidebar");
-const navbutton = document.getElementById("navbutton");
-const mainMap = document.getElementById("map");
-
-
-navbutton.addEventListener('click', () => {
-  sidebar.classList.toggle('active');
-  mainMap.classList.toggle('active');
-});
-
-const faveButton = document.getElementById("view-fave-button");
-
-faveButton.addEventListener('click', () => {
-    const faveDiv = document.getElementById("favorites-container");
-    if(faveDiv.style.display === "none"){
-      faveDiv.style.display = "block";
-    }
-    else{
-      faveDiv.style.display = "none";
-    }
-});
-
-const recentButton = document.getElementById("recent-button");
-
-recentButton.addEventListener('click', () => {
-    const faveDiv = document.getElementById("recent-container");
-    if(faveDiv.style.display === "none"){
-      faveDiv.style.display = "block";
-    }
-    else{
-      faveDiv.style.display = "none";
-    }
-});
-
 // Route display functionality
 const routeDisplay = new function () {
   this.directionsService;
@@ -196,6 +160,42 @@ function clearMarkers(markersCollection) {
   });
 }
 
+function miscUISetup(){
+  // Navbar slide function
+  const sidebar = document.getElementById("sidebar");
+  const navbutton = document.getElementById("navbutton");
+  const mainMap = document.getElementById("map");
+
+  navbutton.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
+    mainMap.classList.toggle('active');
+  });
+
+  // Hide/display favorites list on button click
+  const faveButton = document.getElementById("view-fave-button");
+
+  faveButton.addEventListener('click', () => {
+      const faveDiv = document.getElementById("favorites-container");
+      if(faveDiv.style.display === "none"){
+        faveDiv.style.display = "block";
+      }
+      else{
+        faveDiv.style.display = "none";
+      }
+  });
+
+  const recentButton = document.getElementById("recent-button");
+
+  recentButton.addEventListener('click', () => {
+      const faveDiv = document.getElementById("recent-container");
+      if(faveDiv.style.display === "none"){
+        faveDiv.style.display = "block";
+      }
+      else{
+        faveDiv.style.display = "none";
+      }
+  });
+}
 
 function getMap(center) {
   return new google.maps.Map(document.getElementById("map"), {
@@ -441,7 +441,7 @@ export async function initMap() {
 
   routeDisplay.init();
   navButtonInitialization(map, allMarks);
-
+  miscUISetup();
 
   displayFavoriteSearches(); // Display saved favorites on load
 
