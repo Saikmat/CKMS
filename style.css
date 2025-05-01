@@ -6,6 +6,7 @@
   background-color: black;
 }
 
+
 #titletxt {
   position: absolute;
   left: 50%;
@@ -19,16 +20,20 @@
   font-style: normal;
 }
 
+
 #logo {
   margin-left: 2vw;
   height: 4vw;
 }
+
 
 #mainpage {
   background-color: white;
   width: 100%;
   height: 100%;
 }
+
+
 
 
 #navbar {
@@ -41,9 +46,11 @@
   position: relative;
 }
 
+
 #navbuttons {
   display: flex;
 }
+
 
 #navbutton {
   position: absolute;
@@ -56,6 +63,7 @@
   background-color: transparent;
 }
 
+
 #map {
   height: 100%;
   width: 80%;
@@ -63,6 +71,7 @@
   margin: auto;
   transition: width 1s;
 }
+
 
 #sidebar {
   width: 20%;
@@ -73,13 +82,16 @@
   transition: width 1s;
 }
 
+
 #sidebar.active {
   width: 0%;
 }
 
+
 #map.active {
   width: 100%;
 }
+
 
 #searchbar {
   height: 15%;
@@ -101,11 +113,13 @@
   grid-row-gap: 0.25vw;
 }
 
+
 @media screen and (orientation: portrait){
   #searchbar{
     height: 5%;
   }
 }
+
 
 #buttons {
   width: 100%;
@@ -126,6 +140,7 @@
   transform: scale(1.2);
 }
 
+
 #favorites-container {
   margin-top: 1vw;
   padding-left: 1vw;
@@ -133,17 +148,20 @@
   font-size: 0.9vw;
 }
 
+
 #favorites-list {
   list-style-type: "⭐ ";
   padding-left: 1.5vw;
   margin: 0.5vw 0;
 }
 
+
 #favorites-list li {
   margin-bottom: 0.5vw;
   cursor: pointer;
   color: rgb(50, 50, 50);
 }
+
 
 #favorites-list li:hover {
   color: rgb(253, 181, 21);
@@ -197,6 +215,7 @@
   width: 90%;
 }
 
+
 #directions-region {
   padding-left: 1vw;
   padding-bottom: 1vw;
@@ -205,6 +224,7 @@
   font-style: normal;
   width: 90%;
 }
+
 
 #index-txt, #accessible-txt, #weather-txt {
   text-align: center;
@@ -218,9 +238,11 @@
   text-decoration: none;
 }
 
+
 #nav-txt:hover {
   color: white;
 }
+
 
 #origin-input, #dest-input {
   width: 15vw;
@@ -233,15 +255,18 @@
   border: 0.15vw solid black;
 }
 
+
 #commons-marker-icon {
   width: 30px;
   height: auto;
 }
 
+
 embed {
   margin: 0;
   padding: 0;
 }
+
 
 #footer {
   bottom: 0;
@@ -262,6 +287,7 @@ embed {
   text-decoration: none;
 }
 
+
 #feedback-button {
   position: fixed;
   top: 40%;
@@ -280,14 +306,17 @@ embed {
   background-color: rgb(253, 181, 21);
 }
 
+
 #feedback-button:hover {
   background-color: rgb(166, 122, 5);
 }
+
 
 #secondary-container {
   background-color: black;
   height: 100%;
 }
+
 
 #secondary-img {
   width: 100%;
@@ -296,10 +325,12 @@ embed {
   padding: 0;
 }
 
+
 html, body {
   height: 100%;
   margin: 0;
 }
+
 
 .gm-style-iw-chr {
   width: 20%;
@@ -310,6 +341,25 @@ html, body {
   display: flex;
 }
 
+
 .gm-style-iw.gm-style-iw-c {
   padding-top: 1vw !important;
+}
+
+#recent-list li {
+  font-family: "Inter", sans-serif;
+  font-size: 0.8vw;
+  cursor: pointer;
+  margin-bottom: 0.5vw;
+  list-style-type: disc;
+}
+
+#recent-list li:hover {
+  text-decoration: underline;
+}
+
+#clear-recent-button {
+  font-size: 0.7vw;
+  padding: 2px 6px;
+  cursor: pointer;
 }

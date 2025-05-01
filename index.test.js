@@ -22,6 +22,8 @@ test('map deployment', () => {
 // test that title is in the right place
 test('text locations', async ({page}) => {
     await expect(page.getByRole('heading', {name: `UMBC Interactive Map`, exact: true})); // not right, work on this
+test('text locations', async ({page}) => {
+    await expect(page.getByRole('heading', {name: `UMBC Interactive Map`, exact: true})); // not right, work on this
 });
 describe('Campus Navigation App', () => {
     describe('side matter', () => {

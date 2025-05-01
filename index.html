@@ -15,6 +15,7 @@
       <h1 id="titletxt">Interactive Map</h1>
     </div>
 
+
     <div id="navbar">
 
 
@@ -26,10 +27,11 @@
 
     </div>
 
+
     <div id="mainpage">
       <div id="sidebar">
         <div id="directions" style="padding-top: 15px; padding-bottom: 10px; font-weight: bold;">Search for a Destination</div>
-        
+       
         <!-- Search Bar -->
         <div id="searchbar">
           <div id="search-favorite">
@@ -49,6 +51,15 @@
           </div>
         </div>
 
+        <!-- Recent Searches List Display (NOW OUTSIDE searchbar) -->
+        <div id="recent-container" style="margin-top: 20px;">
+          <p style="font-weight: bold; font-size: 1vw;">Recent Searches:</p>
+          <div id="recent-bullet">
+            <ul id="recent-list" style="padding-left: 2vw;"></ul>
+            <button id="clear-recent-button" style="margin-top: 5px;">Clear Recent</button>
+          </div>
+        </div>
+
         <!-- Favorite List Display -->
           <div id="favorites-container" style="margin-top: 20px;">
             <p style="font-weight: bold; font-size: 1vw;">Your Favorite Destinations:</p>
@@ -63,20 +74,21 @@
           <p style="font-weight: bold">Directions</p>
           <p>Use caution when following walking directions.</p>
         </div>
-
       </div>
+
 
       <!-- Map Container -->
       <div id="map"></div>
     </div>
 
+
     <!-- Feedback Button -->
     <button id="feedback-button" onclick="window.open('https://forms.gle/EBJ5S11ruVYUaRyTA', '_blank')">Provide Feedback</button>
+
 
     <div id="footer">
       <p>University of Maryland, Baltimore County &#x2022; 1000 Hilltop Circle, Baltimore, MD 21250<br>Copyright 2025 &copy; All Rights Reserved</p>
     </div>
-
-    <script src="https://unpkg.com/@googlemaps/js-api-loader@1.x/dist/index.min.js"></script>
   </body>
 </html>
+
