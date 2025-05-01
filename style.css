@@ -107,7 +107,6 @@
   grid-row-gap: 0.5vw;
 }
 
-
 #search-favorite {
   display: grid;
   grid-template-columns: auto auto auto;
@@ -130,13 +129,11 @@
   justify-content: left;
 }
 
-
 #favorite-button-1, #favorite-button-2 {
   border: none;
   width: 2vw;
   background-color: transparent;
 }
-
 
 #favorite-button-1:hover, #favorite-button-2:hover {
   cursor: pointer;
@@ -171,7 +168,6 @@
   text-decoration: underline;
 }
 
-
 #search-button, #clear-button, #view-fave-button {
   margin-right: 0.5vw;
   border-radius: 0.75vw;
@@ -187,18 +183,15 @@
   cursor: pointer;
 }
 
-
 #search-button:hover, #clear-button:hover, #view-fave-button:hover {
   background-color: rgb(166, 122, 5);
 }
-
 
 #fave-bullet {
   display: grid;
   grid-template-columns: auto auto;
   align-items: center;
 }
-
 
 .delete-fave {
   width: 2vw;
@@ -207,13 +200,11 @@
   margin-left: 1vw;
 }
 
-
 .delete-fave:hover {
   cursor: pointer;
   background-color: darkgrey;
   border-color: black;
 }
-
 
 #directions {
   padding-left: 1vw;

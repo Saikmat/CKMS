@@ -13,10 +13,7 @@ navbutton.addEventListener('click', () => {
   mainMap.classList.toggle('active');
 });
 
-
-// Hide/display favorites list on button click
 const faveButton = document.getElementById("view-fave-button");
-
 
 faveButton.addEventListener('click', () => {
     const faveDiv = document.getElementById("favorites-container");
@@ -27,7 +24,6 @@ faveButton.addEventListener('click', () => {
       faveDiv.style.display = "none";
     }
 });
-
 
 // Route display functionality
 const routeDisplay = new function () {
@@ -153,7 +149,6 @@ function searchBoxInitialization(searchBox, markers, AdvancedMarkerElement, map)
       infoWindow.open(map, marker);
     });
 
-
     markers.push(marker);
   });
 }
@@ -162,7 +157,6 @@ function searchBoxInitialization(searchBox, markers, AdvancedMarkerElement, map)
 function navButtonInitialization(map, markersCollection) {
   const directions = document.getElementById("directions-region");
   directions.style.display = "none";
-
 
   const showButton = document.getElementById("search-button");
   showButton.addEventListener("click", () => {
@@ -213,6 +207,8 @@ function getMap(center) {
 
 // --- FAVORITES FUNCTIONS ---
 function saveFavoriteSearch(place) {
+  //if(!place.place_id) return;
+
   let favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
 
 
@@ -225,14 +221,12 @@ function saveFavoriteSearch(place) {
   }
 }
 
-
 function deleteFavoriteSearch(index) {
   let favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
   favorites.splice(index, 1);
   localStorage.setItem("favorites", JSON.stringify(favorites));
   displayFavoriteSearches();
 }
-
 
 function displayFavoriteSearches() {
   const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
@@ -241,8 +235,7 @@ function displayFavoriteSearches() {
 
 
   favoritesList.innerHTML = "";
-
-
+  
   if(favorites.length === 0){
     const emptyItem = document.createElement("p");
     emptyItem.textContent = "Nothing to see here!";
@@ -250,14 +243,11 @@ function displayFavoriteSearches() {
     return;
   }
 
-
   favorites.forEach((place, index) => {
     const listItem = document.createElement("li");
 
-
     const itemName = document.createElement("div");
-    //itemName.innerHTML = "⭐ " + place.name;
-    itemName.innerHTML = place.name;
+    itemName.innerHTML = "⭐ " + place.name;
     itemName.addEventListener('click', () => {
       const placeStub = {
         name: place.name,
@@ -269,8 +259,6 @@ function displayFavoriteSearches() {
           }
         }
       };
-      //routeDisplay.setDest(placeStub);
-      //document.getElementById("dest-input").value = place.name;
       if (lastFocusedInput === "origin") {
         routeDisplay.setOrigin(placeStub);
         document.getElementById("origin-input").value = place.name;
@@ -281,15 +269,13 @@ function displayFavoriteSearches() {
       
     });
     listItem.appendChild(itemName);
-
-
+    
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "-";
     deleteButton.className = "delete-fave";
     deleteButton.onclick = () => {
       deleteFavoriteSearch(index);
     };
-
 
     listItem.appendChild(deleteButton);
     favoritesList.appendChild(listItem);
@@ -411,7 +397,6 @@ export async function initMap() {
     };
   }  
 
-
   const destInput = document.getElementById("dest-input");
   const destBox = new google.maps.places.Autocomplete(destInput, {
     fields: ["place_id", "geometry", "formatted_address", "name"],
@@ -433,15 +418,12 @@ export async function initMap() {
       }
     };
   }
- 
-
 
   map.addListener("bounds_changed", () => {
     originBox.bindTo("bounds", map);
     destBox.bindTo("bounds", map);
   });
-
-
+  
   searchBoxInitialization(originBox, originMarkers, AdvancedMarkerElement, map);
   searchBoxInitialization(destBox, destMarkers, AdvancedMarkerElement, map);
   //saveRecentSearch(place);
@@ -452,7 +434,6 @@ export async function initMap() {
 
 
   displayFavoriteSearches(); // Display saved favorites on load
-
 
   //hide favorites on load
   const favs = document.getElementById("favorites-container");
@@ -466,7 +447,6 @@ export async function initMap() {
   destInput.addEventListener("focus", () => {
     lastFocusedInput = "dest";
   });
-  
 }
 
 
